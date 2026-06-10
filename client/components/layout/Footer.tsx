@@ -131,8 +131,8 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
             ) : null}
               {resourceLinks.length > 0 ? (
                 <ul className="text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] space-y-1">
-                  {resourceLinks.map((link) => (
-                    <li key={link.label}>
+                  {resourceLinks.map((link, i) => (
+                    <li key={`${link.label}-${i}`}>
                       <Link
                         to={link.href || "#"}
                         className="hover:text-brand-accent transition-colors"
@@ -157,8 +157,8 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
             ) : null}
               {practiceLinks.length > 0 ? (
                 <ul className="text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] space-y-1">
-                  {practiceLinks.map((link) => (
-                    <li key={link.label}>
+                  {practiceLinks.map((link, i) => (
+                    <li key={`${link.label}-${i}`}>
                       <Link
                         to={link.href || "/practice-areas/"}
                         className="hover:text-brand-accent transition-colors"
