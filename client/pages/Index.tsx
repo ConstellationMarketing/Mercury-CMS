@@ -2,6 +2,7 @@ import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import HeroSection from "@site/components/home/HeroSection";
 import StatsVideoSection from "@site/components/home/StatsVideoSection";
+import PartnerLogosBar from "@site/components/home/PartnerLogosBar";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -50,32 +51,8 @@ export default function Index() {
       {/* Stats / Video Section */}
       <StatsVideoSection content={statsVideoContent} />
 
-      {/* Partner Badges Section - Bottom of Hero */}
-      {partnerLogos.length > 0 && (
-        <div className="bg-brand-dark py-[20px] md:py-[30px]">
-          <div className="max-w-[2560px] mx-auto w-[95%]">
-            <div className="bg-brand-card border border-brand-border py-[10px] px-0 flex flex-nowrap justify-center overflow-hidden">
-              {partnerLogos.map((logo, index) => (
-                <div
-                  key={index}
-                  className="px-[8px] sm:px-[15px] md:px-[30px] py-2 flex items-center justify-center flex-shrink"
-                >
-                  <div className="text-center">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="w-[80px] sm:w-[100px] md:w-[120px] lg:w-[190px] max-w-full inline-block"
-                      width={190}
-                      height={123}
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Partner Logos Bar */}
+      <PartnerLogosBar logos={partnerLogos} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />
