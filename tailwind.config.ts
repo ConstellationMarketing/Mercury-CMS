@@ -22,6 +22,7 @@ export default {
         ],
         outfit: ["Outfit", "Helvetica", "Arial", "Lucida", "sans-serif"],
         archivo: ["Archivo", "Helvetica", "Arial", "Lucida", "sans-serif"],
+        roboto: ["Roboto", "Helvetica", "Arial", "Lucida", "sans-serif"],
       },
       colors: {
         // TEMPLATE: Update brand colors for each new project
