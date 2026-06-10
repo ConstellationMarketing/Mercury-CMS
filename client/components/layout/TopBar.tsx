@@ -60,35 +60,31 @@ export default function TopBar() {
         >
           <div className="mx-auto text-center" style={{ maxWidth: "550px" }}>
             <div className="text-left">
-              {phoneAvailability && (
-                <h4
-                  className="font-archivo font-semibold uppercase text-black text-right"
+              <h4
+                className="font-archivo font-semibold uppercase text-black text-right"
+                style={{
+                  fontSize: "24px",
+                  paddingBottom: "10px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {phoneAvailability}
+              </h4>
+              <div className="text-right">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="font-archivo font-semibold text-right transition-opacity duration-150 hover:opacity-80"
                   style={{
-                    fontSize: "24px",
-                    paddingBottom: "10px",
+                    color: "rgb(94, 6, 14)",
+                    fontSize: "30px",
+                    lineHeight: "45px",
                     whiteSpace: "nowrap",
+                    display: "inline",
                   }}
                 >
-                  {phoneAvailability}
-                </h4>
-              )}
-              {phoneDisplay && (
-                <div className="text-right">
-                  <a
-                    href={`tel:${phoneNumber}`}
-                    className="font-archivo font-semibold text-right transition-opacity duration-150 hover:opacity-80"
-                    style={{
-                      color: "rgb(94, 6, 14)",
-                      fontSize: "30px",
-                      lineHeight: "45px",
-                      whiteSpace: "nowrap",
-                      display: "inline",
-                    }}
-                  >
-                    {phoneDisplay}
-                  </a>
-                </div>
-              )}
+                  {phoneDisplay}
+                </a>
+              </div>
             </div>
           </div>
         </div>
