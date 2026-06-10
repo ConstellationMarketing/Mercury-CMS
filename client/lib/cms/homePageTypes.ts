@@ -177,6 +177,17 @@ export interface TeamMembersContent {
   members: TeamMember[];
 }
 
+export interface ClientStoryVideo {
+  url: string;
+  thumbnail: string;
+}
+
+export interface ClientStoriesContent {
+  heading: string;
+  description: string;
+  videos: ClientStoryVideo[];
+}
+
 export interface VideoCtaContent {
   videoUrl: string;
   videoThumbnail: string;
@@ -198,6 +209,7 @@ export interface HomePageContent {
   teamSection: TeamSectionContent;
   teamMembers: TeamMembersContent;
   videoCta: VideoCtaContent;
+  clientStories: ClientStoriesContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
@@ -232,6 +244,11 @@ export const defaultHomeContent: HomePageContent = {
   teamSection: {
     heading: "",
     subtext: "",
+  },
+  clientStories: {
+    heading: "",
+    description: "",
+    videos: [],
   },
   videoCta: {
     videoUrl: "",

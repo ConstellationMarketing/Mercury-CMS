@@ -6,6 +6,7 @@ import PartnerLogosBar from "@site/components/home/PartnerLogosBar";
 import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
 import TeamMembersSection from "@site/components/home/TeamMembersSection";
 import VideoCtaSection from "@site/components/home/VideoCtaSection";
+import ClientStoriesSection from "@site/components/home/ClientStoriesSection";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -65,6 +66,9 @@ export default function Index() {
 
       {/* Video + CTA Section */}
       <VideoCtaSection content={content.videoCta} />
+
+      {/* Client Stories Section */}
+      <ClientStoriesSection content={content.clientStories} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />

@@ -487,6 +487,11 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    clientStories: {
+      ...defaults.clientStories,
+      ...cmsContent.clientStories,
+      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
+    },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -543,6 +548,11 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    clientStories: {
+      ...defaults.clientStories,
+      ...cmsContent.clientStories,
+      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
+    },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -608,6 +618,11 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    clientStories: {
+      ...defaults.clientStories,
+      ...cmsContent.clientStories,
+      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
+    },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -678,6 +693,11 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    clientStories: {
+      ...defaults.clientStories,
+      ...cmsContent.clientStories,
+      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
+    },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -758,6 +778,11 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    clientStories: {
+      ...defaults.clientStories,
+      ...cmsContent.clientStories,
+      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
+    },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
