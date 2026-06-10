@@ -21,9 +21,11 @@ export default {
           "serif",
         ],
         outfit: ["Outfit", "Helvetica", "Arial", "Lucida", "sans-serif"],
+        archivo: ["Archivo", "Helvetica", "Arial", "Lucida", "sans-serif"],
       },
       colors: {
         // TEMPLATE: Update brand colors for each new project
+        "brand-crimson": "rgb(94, 6, 14)",
         "brand-dark": "rgb(6, 29, 27)",
         "brand-card": "rgb(20, 41, 40)",
         "brand-border": "rgb(97, 111, 111)",
