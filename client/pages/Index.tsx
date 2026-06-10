@@ -1,6 +1,7 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import HeroSection from "@site/components/home/HeroSection";
+import StatsVideoSection from "@site/components/home/StatsVideoSection";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -29,8 +30,8 @@ export default function Index() {
     );
   }
 
-  // Use CMS content for hero and partner logos
   const heroContent = content.hero;
+  const statsVideoContent = content.statsVideo;
   const partnerLogos = content.partnerLogos;
 
   return (
@@ -45,6 +46,9 @@ export default function Index() {
 
       {/* Hero Section */}
       <HeroSection content={heroContent} />
+
+      {/* Stats / Video Section */}
+      <StatsVideoSection content={statsVideoContent} />
 
       {/* Partner Badges Section - Bottom of Hero */}
       {partnerLogos.length > 0 && (

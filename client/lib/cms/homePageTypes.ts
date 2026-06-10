@@ -141,9 +141,26 @@ export interface ContactContent {
   backgroundImageAlt?: string;
 }
 
+export interface StatsVideoContent {
+  videoUrl: string;           // YouTube embed URL
+  videoThumbnail: string;     // Thumbnail image over the video
+  stat1BackgroundImage: string;
+  stat1BadgeImage: string;    // e.g. "3X" badge
+  stat1BadgeAlt: string;
+  stat1Headline: string;      // e.g. "BIGGER PAYOUTS"
+  stat1Subtext: string;       // e.g. "WHEN YOU HIRE US"
+  stat1FoundedYear: string;   // e.g. "SINCE 2010"
+  stat2BackgroundImage: string;
+  stat2Label: string;         // e.g. "CLIENT"
+  stat2BadgeImage: string;    // e.g. "99%" badge
+  stat2BadgeAlt: string;
+  stat2Subtext: string;       // e.g. "SATISFACTION"
+}
+
 // Complete homepage content structure
 export interface HomePageContent {
   hero: HeroContent;
+  statsVideo: StatsVideoContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
@@ -174,6 +191,21 @@ export const defaultHomeContent: HomePageContent = {
     attorneyImage: "",
     awardBadgeImage: "",
     awardBadgeAlt: "",
+  },
+  statsVideo: {
+    videoUrl: "",
+    videoThumbnail: "",
+    stat1BackgroundImage: "",
+    stat1BadgeImage: "",
+    stat1BadgeAlt: "",
+    stat1Headline: "",
+    stat1Subtext: "",
+    stat1FoundedYear: "",
+    stat2BackgroundImage: "",
+    stat2Label: "",
+    stat2BadgeImage: "",
+    stat2BadgeAlt: "",
+    stat2Subtext: "",
   },
   partnerLogos: [],
   about: {

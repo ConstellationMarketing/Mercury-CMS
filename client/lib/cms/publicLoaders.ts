@@ -485,6 +485,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     partnerLogos: cmsContent.partnerLogos?.length ? cmsContent.partnerLogos : defaults.partnerLogos,
     about: {
       ...defaults.about,
@@ -534,6 +535,7 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     story: {
       ...defaults.story,
       ...cmsContent.story,
@@ -592,6 +594,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     contactMethods: {
       ...defaults.contactMethods,
       ...cmsContent.contactMethods,
@@ -655,6 +658,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     grid: {
       ...defaults.grid,
       ...cmsContent.grid,
@@ -728,6 +732,7 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     socialProof: {
       ...defaults.socialProof,
       ...cmsContent.socialProof,
