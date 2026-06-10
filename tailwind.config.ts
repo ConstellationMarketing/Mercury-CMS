@@ -27,6 +27,9 @@ export default {
       colors: {
         // TEMPLATE: Update brand colors for each new project
         "brand-crimson": "rgb(94, 6, 14)",
+        "brand-yellow": "rgb(252, 200, 47)",
+        "brand-forest": "rgb(17, 71, 36)",
+        "brand-green": "rgb(42, 110, 66)",
         "brand-dark": "rgb(6, 29, 27)",
         "brand-card": "rgb(20, 41, 40)",
         "brand-border": "rgb(97, 111, 111)",

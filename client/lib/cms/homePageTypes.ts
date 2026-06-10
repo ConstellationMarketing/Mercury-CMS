@@ -2,11 +2,20 @@
 // Each section maps directly to a static component's data needs
 
 export interface HeroContent {
-  h1Title: string; // H1 title text (all caps, ~20px) between headline and phone button
+  h1Title: string;
   headline: string;
   highlightedText: string;
   phone: string;
   phoneLabel: string;
+  // New design fields
+  foundedYear: string;       // e.g. "SINCE 2010"
+  statNumber: string;        // e.g. "BILLIONS"
+  statLabel: string;         // e.g. "WON FOR OUR CLIENTS"
+  tagline: string;           // e.g. "JUST IN CASE®"
+  backgroundImage: string;   // hero bg image URL
+  attorneyImage: string;     // right column person bg image URL
+  awardBadgeImage: string;   // award badge image URL
+  awardBadgeAlt: string;
 }
 
 export interface PartnerLogo {
@@ -157,6 +166,14 @@ export const defaultHomeContent: HomePageContent = {
     highlightedText: "",
     phone: "",
     phoneLabel: "",
+    foundedYear: "",
+    statNumber: "",
+    statLabel: "",
+    tagline: "",
+    backgroundImage: "",
+    attorneyImage: "",
+    awardBadgeImage: "",
+    awardBadgeAlt: "",
   },
   partnerLogos: [],
   about: {
