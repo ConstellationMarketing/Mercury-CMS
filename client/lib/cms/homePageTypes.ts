@@ -177,6 +177,15 @@ export interface TeamMembersContent {
   members: TeamMember[];
 }
 
+export interface VideoCtaContent {
+  videoUrl: string;
+  videoThumbnail: string;
+  heading: string;
+  description: string;
+  ctaText: string;
+  ctaUrl: string;
+}
+
 export interface TeamSectionContent {
   heading: string;   // e.g. "OUR TEAM OF LAWYERS"
   subtext: string;   // e.g. "Meet the entire legal team"
@@ -188,6 +197,7 @@ export interface HomePageContent {
   statsVideo: StatsVideoContent;
   teamSection: TeamSectionContent;
   teamMembers: TeamMembersContent;
+  videoCta: VideoCtaContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
@@ -222,6 +232,14 @@ export const defaultHomeContent: HomePageContent = {
   teamSection: {
     heading: "",
     subtext: "",
+  },
+  videoCta: {
+    videoUrl: "",
+    videoThumbnail: "",
+    heading: "",
+    description: "",
+    ctaText: "",
+    ctaUrl: "",
   },
   teamMembers: {
     featured: {

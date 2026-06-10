@@ -486,6 +486,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
+    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -541,6 +542,7 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
+    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -605,6 +607,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
+    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -674,6 +677,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
+    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
@@ -753,6 +757,7 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
+    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
     teamMembers: {
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
