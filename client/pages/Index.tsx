@@ -7,6 +7,7 @@ import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
 import TeamMembersSection from "@site/components/home/TeamMembersSection";
 import VideoCtaSection from "@site/components/home/VideoCtaSection";
 import ClientStoriesSection from "@site/components/home/ClientStoriesSection";
+import ContactFormSection from "@site/components/home/ContactFormSection";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -69,6 +70,9 @@ export default function Index() {
 
       {/* Client Stories Section */}
       <ClientStoriesSection content={content.clientStories} />
+
+      {/* Contact Form Section */}
+      <ContactFormSection content={content.contactFormSection} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />

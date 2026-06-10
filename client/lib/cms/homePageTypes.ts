@@ -177,6 +177,13 @@ export interface TeamMembersContent {
   members: TeamMember[];
 }
 
+export interface ContactFormSectionContent {
+  heading: string;         // e.g. "WHAT'S YOUR STORY?"
+  backgroundImage: string; // right column bg image
+  badgeImage: string;      // small badge in top-right corner
+  badgeAlt: string;
+}
+
 export interface ClientStoryVideo {
   url: string;
   thumbnail: string;
@@ -209,6 +216,7 @@ export interface HomePageContent {
   teamSection: TeamSectionContent;
   teamMembers: TeamMembersContent;
   videoCta: VideoCtaContent;
+  contactFormSection: ContactFormSectionContent;
   clientStories: ClientStoriesContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
@@ -244,6 +252,12 @@ export const defaultHomeContent: HomePageContent = {
   teamSection: {
     heading: "",
     subtext: "",
+  },
+  contactFormSection: {
+    heading: "",
+    backgroundImage: "",
+    badgeImage: "",
+    badgeAlt: "",
   },
   clientStories: {
     heading: "",

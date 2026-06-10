@@ -487,6 +487,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
     clientStories: {
       ...defaults.clientStories,
       ...cmsContent.clientStories,
@@ -548,6 +549,7 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
     clientStories: {
       ...defaults.clientStories,
       ...cmsContent.clientStories,
@@ -618,6 +620,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
     clientStories: {
       ...defaults.clientStories,
       ...cmsContent.clientStories,
@@ -693,6 +696,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
     clientStories: {
       ...defaults.clientStories,
       ...cmsContent.clientStories,
@@ -778,6 +782,7 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
     hero: { ...defaults.hero, ...cmsContent.hero },
     teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
+    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
     clientStories: {
       ...defaults.clientStories,
       ...cmsContent.clientStories,
