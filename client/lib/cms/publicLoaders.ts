@@ -485,6 +485,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     partnerLogos: cmsContent.partnerLogos?.length ? cmsContent.partnerLogos : defaults.partnerLogos,
     about: {
@@ -535,6 +536,7 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     story: {
       ...defaults.story,
@@ -594,6 +596,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     contactMethods: {
       ...defaults.contactMethods,
@@ -658,6 +661,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     grid: {
       ...defaults.grid,
@@ -732,6 +736,7 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     socialProof: {
       ...defaults.socialProof,

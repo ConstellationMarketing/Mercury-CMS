@@ -157,10 +157,16 @@ export interface StatsVideoContent {
   stat2Subtext: string;       // e.g. "SATISFACTION"
 }
 
+export interface TeamSectionContent {
+  heading: string;   // e.g. "OUR TEAM OF LAWYERS"
+  subtext: string;   // e.g. "Meet the entire legal team"
+}
+
 // Complete homepage content structure
 export interface HomePageContent {
   hero: HeroContent;
   statsVideo: StatsVideoContent;
+  teamSection: TeamSectionContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
@@ -191,6 +197,10 @@ export const defaultHomeContent: HomePageContent = {
     attorneyImage: "",
     awardBadgeImage: "",
     awardBadgeAlt: "",
+  },
+  teamSection: {
+    heading: "",
+    subtext: "",
   },
   statsVideo: {
     videoUrl: "",

@@ -3,6 +3,7 @@ import Layout from "@site/components/layout/Layout";
 import HeroSection from "@site/components/home/HeroSection";
 import StatsVideoSection from "@site/components/home/StatsVideoSection";
 import PartnerLogosBar from "@site/components/home/PartnerLogosBar";
+import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -53,6 +54,9 @@ export default function Index() {
 
       {/* Partner Logos Bar */}
       <PartnerLogosBar logos={partnerLogos} />
+
+      {/* Team Section Heading */}
+      <TeamSectionHeading content={content.teamSection} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />
