@@ -14,9 +14,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Spacer so page content doesn't jump under sticky nav */}
-      <div className="h-[74px]" />
-
       {/* Sticky crimson nav bar */}
       <div
         className="sticky top-0 z-50 w-full"
