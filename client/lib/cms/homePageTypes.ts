@@ -157,6 +157,26 @@ export interface StatsVideoContent {
   stat2Subtext: string;       // e.g. "SATISFACTION"
 }
 
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  imageAlt?: string;
+}
+
+export interface FeaturedAttorney extends TeamMember {
+  email: string;
+  phone: string;
+  phoneDisplay: string;
+  facebookUrl: string;
+  instagramUrl: string;
+}
+
+export interface TeamMembersContent {
+  featured: FeaturedAttorney;
+  members: TeamMember[];
+}
+
 export interface TeamSectionContent {
   heading: string;   // e.g. "OUR TEAM OF LAWYERS"
   subtext: string;   // e.g. "Meet the entire legal team"
@@ -167,6 +187,7 @@ export interface HomePageContent {
   hero: HeroContent;
   statsVideo: StatsVideoContent;
   teamSection: TeamSectionContent;
+  teamMembers: TeamMembersContent;
   partnerLogos: PartnerLogo[];
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
@@ -201,6 +222,20 @@ export const defaultHomeContent: HomePageContent = {
   teamSection: {
     heading: "",
     subtext: "",
+  },
+  teamMembers: {
+    featured: {
+      name: "",
+      role: "",
+      image: "",
+      imageAlt: "",
+      email: "",
+      phone: "",
+      phoneDisplay: "",
+      facebookUrl: "",
+      instagramUrl: "",
+    },
+    members: [],
   },
   statsVideo: {
     videoUrl: "",

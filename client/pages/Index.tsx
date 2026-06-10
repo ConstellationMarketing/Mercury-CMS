@@ -4,6 +4,7 @@ import HeroSection from "@site/components/home/HeroSection";
 import StatsVideoSection from "@site/components/home/StatsVideoSection";
 import PartnerLogosBar from "@site/components/home/PartnerLogosBar";
 import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
+import TeamMembersSection from "@site/components/home/TeamMembersSection";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -57,6 +58,9 @@ export default function Index() {
 
       {/* Team Section Heading */}
       <TeamSectionHeading content={content.teamSection} />
+
+      {/* Team Members Grid */}
+      <TeamMembersSection content={content.teamMembers} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />
