@@ -1,252 +1,364 @@
 import React from "react";
-
-import {
-  Facebook,
-  Instagram,
-  Youtube,
-  Linkedin,
-  Twitter,
-  Phone,
-} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSiteSettings } from "@site/contexts/SiteSettingsContext";
 
+const FacebookIcon = () => (
+  <svg viewBox="0 0 24 24" fill="rgb(42,110,66)" style={{ width: 20, height: 20 }}>
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+  </svg>
+);
 
-const SOCIAL_ICON_MAP: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-  facebook: Facebook,
-  instagram: Instagram,
-  youtube: Youtube,
-  linkedin: Linkedin,
-  twitter: Twitter,
-};
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" fill="rgb(42,110,66)" style={{ width: 20, height: 20 }}>
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+  </svg>
+);
 
-const SOCIAL_LABEL_MAP: Record<string, string> = {
-  facebook: "Facebook",
-  instagram: "Instagram",
-  youtube: "Youtube",
-  linkedin: "LinkedIn",
-  twitter: "X",
-};
+const PinIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" style={{ width: 24, height: 24 }}>
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="rgb(42, 110, 66)" />
+  </svg>
+);
+
+const PhoneIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" style={{ width: 24, height: 24 }}>
+    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="rgb(42, 110, 66)" />
+  </svg>
+);
+
+const DEFAULT_ABOUT_LINKS = [
+  { label: "About Us", href: "/about" },
+  { label: "Staff", href: "/about" },
+  { label: "Locations", href: "/contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Referrals", href: "/referrals" },
+  { label: "Contact", href: "/contact" },
+];
+
+const DEFAULT_PRACTICE_LINKS = [
+  { label: "Practice Area", href: "/practice-areas" },
+  { label: "Practice Area", href: "/practice-areas" },
+  { label: "Practice Area", href: "/practice-areas" },
+  { label: "Practice Area", href: "/practice-areas" },
+  { label: "Practice Area", href: "/practice-areas" },
+  { label: "Practice Area", href: "/practice-areas" },
+];
 
 export default function Footer() {
   const { settings } = useSiteSettings();
 
-const logoUrl = settings.logoUrl?.trim() || "";
-const logoAlt = settings.logoAlt?.trim() || settings.siteName?.trim() || "Logo";
+  const siteName = settings.siteName?.trim() || "Constellation Law";
+  const phoneNumber = settings.phoneNumber?.trim() || "4045555555";
+  const phoneDisplay = settings.phoneDisplay?.trim() || "404-555-5555";
+  const mapEmbedUrl = settings.mapEmbedUrl?.trim() || "";
+  const address = settings.address?.trim() || "PO Box 170027 Atlanta, GA 30317-9998";
 
-const phoneNumber = settings.phoneNumber?.trim() || "";
-const phoneDisplay = settings.phoneDisplay?.trim() || "";
-const phoneLabel = settings.phoneAvailability?.trim() || "";
+  const copyrightRaw = settings.copyrightText?.trim() || `Copyright © 2017-${new Date().getFullYear()} | ${siteName} | All Rights Reserved`;
+  const copyrightText = copyrightRaw.replace(/\{year\}/gi, String(new Date().getFullYear()));
 
-const copyrightRaw = settings.copyrightText?.trim() || "";
-const copyrightText = copyrightRaw.replace(/\{year\}/gi, String(new Date().getFullYear()));
-const mapEmbedUrl = settings.mapEmbedUrl?.trim() || "";
+  const aboutLinks =
+    (settings.footerAboutLinks ?? []).length > 0
+      ? settings.footerAboutLinks!
+      : DEFAULT_ABOUT_LINKS;
 
-const resourceLinks = settings.footerAboutLinks ?? [];
-const practiceLinks = settings.footerPracticeLinks ?? [];
-const resourcesHeading = settings.footerResourcesHeading?.trim() || "";
-const practiceAreasHeading = settings.footerPracticeAreasHeading?.trim() || "";
-const footerTaglineHtml = settings.footerTaglineHtml || "";
+  const practiceLinks =
+    (settings.footerPracticeLinks ?? []).length > 0
+      ? settings.footerPracticeLinks!
+      : DEFAULT_PRACTICE_LINKS;
 
-const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled);
-
+  const socialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled);
+  const facebookLink = socialLinks.find((s) => s.platform === "facebook")?.url || "#";
+  const instagramLink = socialLinks.find((s) => s.platform === "instagram")?.url || "#";
 
   return (
-    <footer className="bg-brand-dark relative">
-      {/* Top Section: Tagline and Call Box */}
-      <div className="max-w-[2560px] mx-auto w-[95%] py-[20px] md:py-[27px] flex flex-col lg:flex-row lg:items-center gap-8">
-        {/* Left: Tagline */}
-        <div className="lg:w-[75%]">
-          <div>
-{footerTaglineHtml ? (
-  <div
-    className="font-playfair text-[clamp(2rem,6vw,59.136px)] leading-tight md:leading-[70.9632px] font-light text-white"
-    dangerouslySetInnerHTML={{ __html: footerTaglineHtml }}
-  />
-) : null}
-
+    <footer style={{ backgroundColor: "rgb(19, 71, 36)", paddingBottom: 30, paddingTop: 30, width: "100%" }}>
+      {/* Main content row */}
+      <div
+        style={{
+          marginLeft: "auto",
+          marginRight: "auto",
+          maxWidth: 2560,
+          paddingBottom: 30,
+          paddingTop: 30,
+          width: "90%",
+        }}
+      >
+        <div style={{ display: "flex", gap: "3%" }}>
+          {/* Column 1: About */}
+          <div style={{ width: "22.75%" }}>
+            <h3
+              style={{
+                color: "rgb(255,255,255)",
+                fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                fontSize: 32,
+                lineHeight: "32px",
+                paddingBottom: 10,
+                wordBreak: "break-word",
+              }}
+            >
+              About
+            </h3>
+            <p
+              style={{
+                color: "rgb(255,255,255)",
+                fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                fontSize: 18,
+                fontWeight: 300,
+                lineHeight: "36px",
+                wordBreak: "break-word",
+              }}
+            >
+              {aboutLinks.map((link, i) => (
+                <React.Fragment key={i}>
+                  <Link
+                    to={link.href || "#"}
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {link.label}
+                  </Link>
+                  {i < aboutLinks.length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
           </div>
-        </div>
 
-        {/* Right: Call Us Box */}
-        <div className="lg:w-[25%]">
-          <a href={`tel:${phoneNumber.replace(/\D/g, "")}`}>
-            <div className="bg-brand-accent p-[8px] w-full ml-auto cursor-pointer transition-all duration-300 hover:bg-brand-accent-dark group">
-              <div className="table w-full mx-auto max-w-full flex-row-reverse">
-                <div className="table-cell w-[32px] leading-[0] mb-[30px]">
-                  <span className="m-auto">
-                    <span className="inline-block bg-white p-[15px] text-black group-hover:bg-black transition-colors duration-300">
-                      <Phone
-                        className="w-[31px] h-[31px] [&>*]:fill-none [&>*]:stroke-black group-hover:[&>*]:stroke-white transition-colors duration-300"
-                        strokeWidth={1.5}
-                      />
-                    </span>
-                  </span>
+          {/* Column 2: Practice Areas */}
+          <div style={{ width: "22.75%" }}>
+            <h3
+              style={{
+                color: "rgb(255,255,255)",
+                fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                fontSize: 32,
+                lineHeight: "32px",
+                paddingBottom: 10,
+                wordBreak: "break-word",
+              }}
+            >
+              Practice Areas
+            </h3>
+            <p
+              style={{
+                color: "rgb(255,255,255)",
+                fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                fontSize: 18,
+                fontWeight: 300,
+                lineHeight: "36px",
+                wordBreak: "break-word",
+              }}
+            >
+              {practiceLinks.map((link, i) => (
+                <React.Fragment key={i}>
+                  <Link
+                    to={link.href || "/practice-areas"}
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {link.label}
+                  </Link>
+                  {i < practiceLinks.length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
+          </div>
+
+          {/* Column 3: Info card */}
+          <div
+            style={{
+              backgroundColor: "rgb(255,255,255)",
+              border: "3.636px solid rgb(210,168,78)",
+              borderRadius: 10,
+              overflow: "hidden",
+              padding: 20,
+              width: "22.75%",
+            }}
+          >
+            {/* Firm name */}
+            <div style={{ marginBottom: "6.593%" }}>
+              <h3
+                style={{
+                  color: "rgb(60,60,60)",
+                  fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                  fontSize: 32,
+                  lineHeight: "32px",
+                  paddingBottom: 10,
+                  wordBreak: "break-word",
+                }}
+              >
+                {siteName}
+              </h3>
+            </div>
+
+            {/* Address */}
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ alignItems: "flex-start", display: "flex" }}>
+                <div style={{ width: 32, flexShrink: 0 }}>
+                  <PinIcon />
                 </div>
-                <div className="table-cell align-top pl-[15px]">
-                  <p className="font-outfit text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
-                    {phoneLabel}
-                  </p>
-                  <div>
-                    <p className="font-outfit text-[28px] md:text-[40px] leading-tight md:leading-[44px] text-black group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-                      {phoneDisplay}
-                    </p>
-                  </div>
+                <div style={{ paddingLeft: 15 }}>
+                  <h4
+                    style={{
+                      color: "rgb(28,28,28)",
+                      fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                      fontSize: 24,
+                      lineHeight: "26.4px",
+                      paddingBottom: 10,
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {address}
+                  </h4>
                 </div>
               </div>
             </div>
-          </a>
+
+            {/* Phone */}
+            <div>
+              <div style={{ alignItems: "flex-start", display: "flex" }}>
+                <div style={{ width: 32, flexShrink: 0 }}>
+                  <PhoneIcon />
+                </div>
+                <div style={{ paddingLeft: 15 }}>
+                  <a
+                    href={`tel:${phoneNumber.replace(/\D/g, "")}`}
+                    style={{
+                      color: "rgb(28,28,28)",
+                      fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                      fontSize: 24,
+                      lineHeight: "16.8px",
+                      paddingBottom: 10,
+                      textDecoration: "none",
+                      display: "inline",
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Follow Us */}
+            <div style={{ marginBottom: "6.593%", marginTop: 30 }}>
+              <h3
+                style={{
+                  color: "rgb(60,60,60)",
+                  fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+                  fontSize: 24,
+                  paddingBottom: 10,
+                  wordBreak: "break-word",
+                }}
+              >
+                FOLLOW US:
+              </h3>
+            </div>
+
+            {/* Social icons */}
+            <ul style={{ alignItems: "center", display: "flex", gap: 8, marginTop: -15, listStyle: "none", padding: 0, margin: 0 }}>
+              <li>
+                <a
+                  href={facebookLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow on Facebook"
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "rgb(255,255,255)",
+                    border: "1.818px solid rgb(42,110,66)",
+                    borderRadius: 3,
+                    display: "inline-flex",
+                    height: 44,
+                    justifyContent: "center",
+                    width: 44,
+                    transition: "all 0.3s",
+                  }}
+                >
+                  <FacebookIcon />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow on Instagram"
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "rgb(255,255,255)",
+                    border: "1.818px solid rgb(42,110,66)",
+                    borderRadius: 3,
+                    display: "inline-flex",
+                    height: 44,
+                    justifyContent: "center",
+                    width: 44,
+                    transition: "all 0.3s",
+                  }}
+                >
+                  <InstagramIcon />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Map */}
+          <div style={{ width: "22.75%" }}>
+            <div style={{ borderRadius: 10, overflow: "hidden" }}>
+              {mapEmbedUrl ? (
+                <iframe
+                  src={mapEmbedUrl}
+                  width="100%"
+                  height={235}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Atlanta Location Map"
+                  style={{ display: "block", width: "100%", height: 235, borderRadius: 10 }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "100%",
+                    height: 235,
+                    borderRadius: 10,
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                  }}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Footer Links Section */}
-      <div className="border-t border-b border-[#838383] max-w-[2560px] mx-auto w-[95%] py-[20px] md:py-[27px] flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-[3%]">
-        {/* Logo Column */}
-        <div className="lg:w-[20%] lg:mr-[3%]">
-          <Link to="/" className="block">
-            {logoUrl ? (
-              <img
-                src={logoUrl}
-                alt={logoAlt}
-                className="w-[200px] max-w-full"
-                width={200}
-                height={33}
-              />
-            ) : (
-              <span className="font-outfit text-white text-[24px] leading-none">
-                {settings.siteName || " "}
-              </span>
-            )}
-          </Link>
-
-        </div>
-
-        {/* Resources Column */}
-        <div className="lg:w-[20%] lg:mr-[3%]">
-          <div className="font-outfit text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
-            {resourcesHeading ? (
-              <h3 className="font-outfit text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
-                {resourcesHeading}
-              </h3>
-            ) : null}
-              {resourceLinks.length > 0 ? (
-                <ul className="text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] space-y-1">
-                  {resourceLinks.map((link, i) => (
-                    <li key={`${link.label}-${i}`}>
-                      <Link
-                        to={link.href || "#"}
-                        className="hover:text-brand-accent transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-          </div>
-        </div>
-
-        {/* Practice Areas Column */}
-        <div className="lg:w-[20%] lg:mr-[3%]">
-          <div className="font-outfit text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
-            {practiceAreasHeading ? (
-              <h3 className="font-outfit text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
-                {practiceAreasHeading}
-              </h3>
-            ) : null}
-              {practiceLinks.length > 0 ? (
-                <ul className="text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] space-y-1">
-                  {practiceLinks.map((link, i) => (
-                    <li key={`${link.label}-${i}`}>
-                      <Link
-                        to={link.href || "/practice-areas/"}
-                        className="hover:text-brand-accent transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-          </div>
-        </div>
-
-        {/* Map Column */}
-        <div className="lg:w-[40%] max-w-[900px]">
-          <div className="relative">
-            {mapEmbedUrl ? (
-              <iframe
-                src={mapEmbedUrl}
-                width="100%"
-                height="250"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-[250px]"
-                title="Office Location"
-              />
-            ) : null}
-          </div>
-        </div>
-</div>
-      {/* Social Media Section */}
-      <SocialLinksSection />
-
-
-      {/* Copyright Section */}
-      <div className="border-t border-[#838383] max-w-[2560px] mx-auto w-full py-[10px] px-[30px]">
-        <div className="w-full mx-auto my-auto">
-          <div className="font-outfit text-[18px] font-light leading-[27px] text-white text-center">
-            {copyrightText ? <p>{copyrightText}</p> : null}
-          </div>
+      {/* Copyright bar */}
+      <div
+        style={{
+          backgroundColor: "rgb(7, 64, 25)",
+          paddingBottom: 10,
+          paddingTop: 10,
+          width: "100%",
+        }}
+      >
+        <div
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            maxWidth: 2560,
+            width: "90%",
+          }}
+        >
+          <p
+            style={{
+              color: "rgb(255,255,255)",
+              fontFamily: "Archivo, Helvetica, Arial, Lucida, sans-serif",
+              fontSize: 18,
+              fontWeight: 300,
+              lineHeight: "36px",
+              textAlign: "center",
+              wordBreak: "break-word",
+            }}
+          >
+            {copyrightText}
+          </p>
         </div>
       </div>
     </footer>
-  );
-}
-
-/** Renders the social icon row; falls back to default set if CMS provides none */
-function SocialLinksSection() {
-  const { settings } = useSiteSettings();
-
-  const socialLinks =
-    settings.socialLinks?.filter((s) => s.enabled) ?? [];
-
-  if (socialLinks.length === 0) return null;
-
-  return (
-    <div className="max-w-[1080px] mx-auto w-[80%] py-[20px]">
-      <div className="w-full">
-        <ul className="text-center leading-[26px]">
-          {socialLinks.map((social, idx) => {
-            const Icon = SOCIAL_ICON_MAP[social.platform];
-            const label =
-              SOCIAL_LABEL_MAP[social.platform] || social.platform;
-
-            if (!Icon) return null;
-
-            const isLast = idx === socialLinks.length - 1;
-
-            return (
-              <li key={social.platform} className="inline-block mb-[8px]">
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-block w-[52px] h-[52px] bg-[#142928] border border-[#616f6f] ${
-                    isLast ? "" : "mr-[8px]"
-                  } align-middle transition-all duration-300 hover:bg-brand-accent hover:border-brand-accent group flex items-center justify-center`}
-                  title={`Follow on ${label}`}
-                >
-                  <Icon className="w-6 h-6 text-white group-hover:text-black transition-colors duration-300" />
-                  <span className="sr-only">Follow on {label}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
   );
 }
