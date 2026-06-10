@@ -50,7 +50,10 @@ export default function Footer() {
   const siteName = settings.siteName?.trim() || "Constellation Law";
   const phoneNumber = settings.phoneNumber?.trim() || "4045555555";
   const phoneDisplay = settings.phoneDisplay?.trim() || "404-555-5555";
-  const mapEmbedUrl = settings.mapEmbedUrl?.trim() || "";
+  const rawMapEmbed = settings.mapEmbedUrl?.trim() || "";
+  const mapEmbedUrl = rawMapEmbed.startsWith("<")
+    ? (rawMapEmbed.match(/src="([^"]+)"/) || [])[1] || ""
+    : rawMapEmbed;
   const address = settings.address?.trim() || "PO Box 170027 Atlanta, GA 30317-9998";
 
   const copyrightRaw = settings.copyrightText?.trim() || `Copyright © 2017-${new Date().getFullYear()} | ${siteName} | All Rights Reserved`;
