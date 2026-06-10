@@ -48,6 +48,13 @@ export interface AboutContent {
   stats: AboutStat[];
 }
 
+export interface PracticeAreaIconItem {
+  icon: string;           // 112x112 icon image URL
+  iconAlt?: string;
+  title: string;
+  subPractices: string[]; // list of sub-practice names
+}
+
 export interface PracticeAreaItem {
   title: string;
   image: string;
@@ -216,6 +223,7 @@ export interface HomePageContent {
   teamSection: TeamSectionContent;
   teamMembers: TeamMembersContent;
   videoCta: VideoCtaContent;
+  iconPracticeAreas: PracticeAreaIconItem[];
   contactFormSection: ContactFormSectionContent;
   clientStories: ClientStoriesContent;
   partnerLogos: PartnerLogo[];
@@ -253,6 +261,7 @@ export const defaultHomeContent: HomePageContent = {
     heading: "",
     subtext: "",
   },
+  iconPracticeAreas: [],
   contactFormSection: {
     heading: "",
     backgroundImage: "",

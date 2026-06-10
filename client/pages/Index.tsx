@@ -8,6 +8,7 @@ import TeamMembersSection from "@site/components/home/TeamMembersSection";
 import VideoCtaSection from "@site/components/home/VideoCtaSection";
 import ClientStoriesSection from "@site/components/home/ClientStoriesSection";
 import ContactFormSection from "@site/components/home/ContactFormSection";
+import PracticeAreasIconGrid from "@site/components/home/PracticeAreasIconGrid";
 import ContactForm from "@site/components/home/ContactForm";
 import AboutSection from "@site/components/home/AboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
@@ -73,6 +74,9 @@ export default function Index() {
 
       {/* Contact Form Section */}
       <ContactFormSection content={content.contactFormSection} />
+
+      {/* Practice Areas Icon Grid */}
+      <PracticeAreasIconGrid items={content.iconPracticeAreas} />
 
       {/* About Us Section */}
       <AboutSection content={content.about} headingTag={content.headingTags?.["about.sectionLabel"]} />
