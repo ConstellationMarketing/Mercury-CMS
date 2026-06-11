@@ -241,6 +241,55 @@ export default function AboutUs() {
       {/* Client Testimonials */}
       <AboutTestimonialsSection />
 
+      {/* Ready to Get Started CTA */}
+      <div style={{ backgroundColor: "rgb(235,235,235)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+        <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 1440, paddingBottom: 27, paddingTop: 27, width: "80%" }}>
+          <div style={{ textAlign: "center" }}>
+            <h2
+              className="font-archivo font-bold"
+              style={{ color: "rgb(0,0,0)", fontSize: 52, lineHeight: "52px", paddingBottom: 20, wordBreak: "break-word" }}
+            >
+              READY TO GET STARTED?
+            </h2>
+            <p
+              className="font-archivo"
+              style={{ color: "rgb(43,43,43)", fontSize: 24, fontWeight: 300, lineHeight: "34px", marginBottom: 30, wordBreak: "break-word" }}
+            >
+              Contact us today for a free consultation. We're available 24/7 to help you.
+            </p>
+            <div style={{ marginBottom: 30, textAlign: "center" }}>
+              <a
+                href={`tel:${phoneNumber}`}
+                className="font-archivo font-bold hover:opacity-80 transition-opacity duration-150"
+                style={{ color: "rgb(94,6,14)", fontSize: 48, lineHeight: "72px" }}
+              >
+                {phoneDisplay}
+              </a>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Link
+                to="/contact"
+                className="font-archivo hover:opacity-90 transition-opacity duration-300"
+                style={{
+                  backgroundColor: "rgb(252,200,47)",
+                  borderRadius: 16,
+                  color: "rgb(17,71,36)",
+                  fontSize: 26,
+                  lineHeight: "44.2px",
+                  paddingBottom: 14,
+                  paddingLeft: 26,
+                  paddingRight: 26,
+                  paddingTop: 14,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                GET HELP NOW
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Core Values Section */}
       {coreValues.length > 0 && (
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
