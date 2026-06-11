@@ -14,7 +14,14 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
+      <StatsVideoSectionEditor content={content} update={update} />
       <PartnerLogosSection content={content} update={update} />
+      <TeamSectionHeadingEditor content={content} update={update} />
+      <TeamMembersSectionEditor content={content} update={update} />
+      <VideoCtaSectionEditor content={content} update={update} />
+      <ClientStoriesSectionEditor content={content} update={update} />
+      <ContactFormSectionEditor content={content} update={update} />
+      <IconPracticeAreasSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
       <PracticeAreasItemsSection content={content} update={update} />
@@ -66,8 +73,427 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
           <p className="text-xs text-gray-500 mt-1">Enter the exact portion of the headline to display in accent color</p>
         </div>
+
+        <h4 className="font-medium mt-2 border-t pt-3">Stat Block</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Founded Year Text</Label>
+            <Input value={hero.foundedYear} onChange={(e) => set({ foundedYear: e.target.value })} placeholder="SINCE 2010" />
+          </div>
+          <div>
+            <Label>Stat Number</Label>
+            <Input value={hero.statNumber} onChange={(e) => set({ statNumber: e.target.value })} placeholder="BILLIONS" />
+          </div>
+        </div>
+        <div>
+          <Label>Stat Label</Label>
+          <Input value={hero.statLabel} onChange={(e) => set({ statLabel: e.target.value })} placeholder="WON FOR OUR CLIENTS" />
+        </div>
+        <div>
+          <Label>Tagline</Label>
+          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} placeholder="JUST IN CASE®" />
+        </div>
+
+        <h4 className="font-medium mt-2 border-t pt-3">Images</h4>
+        <ImageField
+          label="Hero Background Image"
+          value={hero.backgroundImage}
+          onChange={(url) => set({ backgroundImage: url })}
+          folder="backgrounds"
+        />
+        <ImageField
+          label="Attorney Image (right column)"
+          value={hero.attorneyImage}
+          onChange={(url) => set({ attorneyImage: url })}
+          folder="team"
+        />
+        <ImageField
+          label="Award Badge Image"
+          value={hero.awardBadgeImage}
+          onChange={(url) => set({ awardBadgeImage: url })}
+          altValue={hero.awardBadgeAlt}
+          onAltChange={(awardBadgeAlt) => set({ awardBadgeAlt })}
+          onSelectAsset={(asset) => set({ awardBadgeImage: asset.url, awardBadgeAlt: asset.suggestedAltText || hero.awardBadgeAlt })}
+          folder="awards"
+        />
+        <div>
+          <Label>Award Badge Alt Text</Label>
+          <Input value={hero.awardBadgeAlt} onChange={(e) => set({ awardBadgeAlt: e.target.value })} />
+        </div>
+
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function StatsVideoSectionEditor({ content, update }: SectionProps) {
+  const sv = content.statsVideo;
+  const set = (patch: Partial<typeof sv>) => update("statsVideo", { ...sv, ...patch });
+
+  return (
+    <Section title="Stats / Video Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <h4 className="font-medium">Video Card</h4>
+        <div>
+          <Label>Video URL (YouTube embed)</Label>
+          <Input value={sv.videoUrl} onChange={(e) => set({ videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/..." />
+        </div>
+        <ImageField
+          label="Video Thumbnail"
+          value={sv.videoThumbnail}
+          onChange={(url) => set({ videoThumbnail: url })}
+          folder="backgrounds"
+        />
+
+        <h4 className="font-medium mt-2 border-t pt-3">Stat Card 1</h4>
+        <ImageField
+          label="Background Image"
+          value={sv.stat1BackgroundImage}
+          onChange={(url) => set({ stat1BackgroundImage: url })}
+          folder="backgrounds"
+        />
+        <ImageField
+          label="Badge Image (e.g. 3X graphic)"
+          value={sv.stat1BadgeImage}
+          onChange={(url) => set({ stat1BadgeImage: url })}
+          altValue={sv.stat1BadgeAlt}
+          onAltChange={(stat1BadgeAlt) => set({ stat1BadgeAlt })}
+          onSelectAsset={(asset) => set({ stat1BadgeImage: asset.url, stat1BadgeAlt: asset.suggestedAltText || sv.stat1BadgeAlt })}
+          folder="badges"
+        />
+        <div>
+          <Label>Badge Alt Text</Label>
+          <Input value={sv.stat1BadgeAlt} onChange={(e) => set({ stat1BadgeAlt: e.target.value })} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Headline (e.g. BIGGER PAYOUTS)</Label>
+            <Input value={sv.stat1Headline} onChange={(e) => set({ stat1Headline: e.target.value })} />
+          </div>
+          <div>
+            <Label>Subtext (e.g. WHEN YOU HIRE US)</Label>
+            <Input value={sv.stat1Subtext} onChange={(e) => set({ stat1Subtext: e.target.value })} />
+          </div>
+        </div>
+        <div>
+          <Label>Founded Year Text (e.g. SINCE 2010)</Label>
+          <Input value={sv.stat1FoundedYear} onChange={(e) => set({ stat1FoundedYear: e.target.value })} />
+        </div>
+
+        <h4 className="font-medium mt-2 border-t pt-3">Stat Card 2</h4>
+        <ImageField
+          label="Background Image"
+          value={sv.stat2BackgroundImage}
+          onChange={(url) => set({ stat2BackgroundImage: url })}
+          folder="backgrounds"
+        />
+        <ImageField
+          label="Badge Image (e.g. 99% graphic)"
+          value={sv.stat2BadgeImage}
+          onChange={(url) => set({ stat2BadgeImage: url })}
+          altValue={sv.stat2BadgeAlt}
+          onAltChange={(stat2BadgeAlt) => set({ stat2BadgeAlt })}
+          onSelectAsset={(asset) => set({ stat2BadgeImage: asset.url, stat2BadgeAlt: asset.suggestedAltText || sv.stat2BadgeAlt })}
+          folder="badges"
+        />
+        <div>
+          <Label>Badge Alt Text</Label>
+          <Input value={sv.stat2BadgeAlt} onChange={(e) => set({ stat2BadgeAlt: e.target.value })} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Label (e.g. CLIENT)</Label>
+            <Input value={sv.stat2Label} onChange={(e) => set({ stat2Label: e.target.value })} />
+          </div>
+          <div>
+            <Label>Subtext (e.g. SATISFACTION)</Label>
+            <Input value={sv.stat2Subtext} onChange={(e) => set({ stat2Subtext: e.target.value })} />
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function TeamSectionHeadingEditor({ content, update }: SectionProps) {
+  const ts = content.teamSection;
+  const set = (patch: Partial<typeof ts>) => update("teamSection", { ...ts, ...patch });
+
+  return (
+    <Section title="Team Section Heading" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading (e.g. OUR TEAM OF LAWYERS)</Label>
+          <Input value={ts.heading} onChange={(e) => set({ heading: e.target.value })} />
+        </div>
+        <div>
+          <Label>Subtext (e.g. Meet the entire legal team)</Label>
+          <Input value={ts.subtext} onChange={(e) => set({ subtext: e.target.value })} />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function TeamMembersSectionEditor({ content, update }: SectionProps) {
+  const tm = content.teamMembers;
+  const setFeatured = (patch: Partial<typeof tm.featured>) =>
+    update("teamMembers", { ...tm, featured: { ...tm.featured, ...patch } });
+
+  return (
+    <Section title="Team Members" defaultOpen={false}>
+      <div className="grid gap-4">
+        <h4 className="font-medium">Featured Attorney</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Name</Label>
+            <Input value={tm.featured.name} onChange={(e) => setFeatured({ name: e.target.value })} />
+          </div>
+          <div>
+            <Label>Role / Title</Label>
+            <Input value={tm.featured.role} onChange={(e) => setFeatured({ role: e.target.value })} />
+          </div>
+        </div>
+        <ImageField
+          label="Photo"
+          value={tm.featured.image}
+          onChange={(url) => setFeatured({ image: url })}
+          altValue={tm.featured.imageAlt || ""}
+          onAltChange={(imageAlt) => setFeatured({ imageAlt })}
+          onSelectAsset={(asset) => setFeatured({ image: asset.url, imageAlt: asset.suggestedAltText || tm.featured.imageAlt })}
+          folder="team"
+        />
+        <div>
+          <Label>Photo Alt Text</Label>
+          <Input value={tm.featured.imageAlt || ""} onChange={(e) => setFeatured({ imageAlt: e.target.value })} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Email</Label>
+            <Input value={tm.featured.email} onChange={(e) => setFeatured({ email: e.target.value })} />
+          </div>
+          <div>
+            <Label>Phone Display (e.g. 404-555-5555)</Label>
+            <Input value={tm.featured.phoneDisplay} onChange={(e) => setFeatured({ phoneDisplay: e.target.value })} />
+          </div>
+        </div>
+        <div>
+          <Label>Phone (digits only, for tel: link)</Label>
+          <Input value={tm.featured.phone} onChange={(e) => setFeatured({ phone: e.target.value })} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Facebook URL</Label>
+            <Input value={tm.featured.facebookUrl} onChange={(e) => setFeatured({ facebookUrl: e.target.value })} />
+          </div>
+          <div>
+            <Label>Instagram URL</Label>
+            <Input value={tm.featured.instagramUrl} onChange={(e) => setFeatured({ instagramUrl: e.target.value })} />
+          </div>
+        </div>
+
+        <h4 className="font-medium mt-2 border-t pt-3">Team Grid (3×2)</h4>
+        <ArrayEditor
+          items={tm.members}
+          onChange={(members) => update("teamMembers", { ...tm, members })}
+          itemLabel="Member"
+          newItem={() => ({ name: "", role: "", image: "", imageAlt: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label>Name</Label>
+                  <Input value={item.name} onChange={(e) => upd({ ...item, name: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Role</Label>
+                  <Input value={item.role} onChange={(e) => upd({ ...item, role: e.target.value })} />
+                </div>
+              </div>
+              <ImageField
+                label="Photo"
+                value={item.image}
+                onChange={(url) => upd({ ...item, image: url })}
+                altValue={item.imageAlt || ""}
+                onAltChange={(imageAlt) => upd({ ...item, imageAlt })}
+                onSelectAsset={(asset) => upd({ ...item, image: asset.url, imageAlt: asset.suggestedAltText || item.imageAlt })}
+                folder="team"
+              />
+              <div>
+                <Label>Photo Alt Text</Label>
+                <Input value={item.imageAlt || ""} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function VideoCtaSectionEditor({ content, update }: SectionProps) {
+  const vc = content.videoCta;
+  const set = (patch: Partial<typeof vc>) => update("videoCta", { ...vc, ...patch });
+
+  return (
+    <Section title="Video + CTA Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Video URL (YouTube embed)</Label>
+          <Input value={vc.videoUrl} onChange={(e) => set({ videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/..." />
+        </div>
+        <ImageField
+          label="Video Thumbnail"
+          value={vc.videoThumbnail}
+          onChange={(url) => set({ videoThumbnail: url })}
+          folder="backgrounds"
+        />
+        <div>
+          <Label>Heading</Label>
+          <Input value={vc.heading} onChange={(e) => set({ heading: e.target.value })} />
+        </div>
+        <div>
+          <Label>Description</Label>
+          <Textarea value={vc.description} onChange={(e) => set({ description: e.target.value })} rows={3} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>CTA Button Text</Label>
+            <Input value={vc.ctaText} onChange={(e) => set({ ctaText: e.target.value })} />
+          </div>
+          <div>
+            <Label>CTA Button URL</Label>
+            <Input value={vc.ctaUrl} onChange={(e) => set({ ctaUrl: e.target.value })} />
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function ClientStoriesSectionEditor({ content, update }: SectionProps) {
+  const cs = content.clientStories;
+  const set = (patch: Partial<typeof cs>) => update("clientStories", { ...cs, ...patch });
+
+  return (
+    <Section title="Client Stories Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input value={cs.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="OUR CLIENTS HAVE REMARKABLE STORIES TO TELL" />
+        </div>
+        <div>
+          <Label>Description</Label>
+          <Textarea value={cs.description} onChange={(e) => set({ description: e.target.value })} rows={3} />
+        </div>
+        <h4 className="font-medium mt-2 border-t pt-3">Video Cards</h4>
+        <ArrayEditor
+          items={cs.videos}
+          onChange={(videos) => set({ videos })}
+          itemLabel="Video"
+          newItem={() => ({ url: "", thumbnail: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Video URL (YouTube embed)</Label>
+                <Input value={item.url} onChange={(e) => upd({ ...item, url: e.target.value })} placeholder="https://www.youtube.com/embed/..." />
+              </div>
+              <ImageField
+                label="Thumbnail Image"
+                value={item.thumbnail}
+                onChange={(url) => upd({ ...item, thumbnail: url })}
+                folder="backgrounds"
+              />
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function ContactFormSectionEditor({ content, update }: SectionProps) {
+  const cf = content.contactFormSection;
+  const set = (patch: Partial<typeof cf>) => update("contactFormSection", { ...cf, ...patch });
+
+  return (
+    <Section title="Contact Form Section (What's Your Story?)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input value={cf.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="WHAT'S YOUR STORY?" />
+        </div>
+        <ImageField
+          label="Right Column Background Image"
+          value={cf.backgroundImage}
+          onChange={(url) => set({ backgroundImage: url })}
+          folder="backgrounds"
+        />
+        <ImageField
+          label="Badge Image (top-right corner)"
+          value={cf.badgeImage}
+          onChange={(url) => set({ badgeImage: url })}
+          altValue={cf.badgeAlt}
+          onAltChange={(badgeAlt) => set({ badgeAlt })}
+          onSelectAsset={(asset) => set({ badgeImage: asset.url, badgeAlt: asset.suggestedAltText || cf.badgeAlt })}
+          folder="awards"
+        />
+        <div>
+          <Label>Badge Alt Text</Label>
+          <Input value={cf.badgeAlt} onChange={(e) => set({ badgeAlt: e.target.value })} />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function IconPracticeAreasSectionEditor({ content, update }: SectionProps) {
+  return (
+    <Section title="Practice Areas Icon Grid" defaultOpen={false}>
+      <ArrayEditor
+        items={content.iconPracticeAreas}
+        onChange={(items) => update("iconPracticeAreas", items)}
+        itemLabel="Practice Area"
+        newItem={() => ({ icon: "", iconAlt: "", title: "", subPractices: [] })}
+        renderItem={(item, _, upd) => (
+          <div className="grid gap-3">
+            <ImageField
+              label="Icon (112×112)"
+              value={item.icon}
+              onChange={(url) => upd({ ...item, icon: url })}
+              altValue={item.iconAlt || ""}
+              onAltChange={(iconAlt) => upd({ ...item, iconAlt })}
+              onSelectAsset={(asset) => upd({ ...item, icon: asset.url, iconAlt: asset.suggestedAltText || item.iconAlt })}
+              folder="icons"
+            />
+            <div>
+              <Label>Icon Alt Text</Label>
+              <Input value={item.iconAlt || ""} onChange={(e) => upd({ ...item, iconAlt: e.target.value })} />
+            </div>
+            <div>
+              <Label>Title</Label>
+              <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
+            </div>
+            <div>
+              <Label>Sub-Practices (one per line)</Label>
+              <Textarea
+                value={(item.subPractices ?? []).join("\n")}
+                onChange={(e) => upd({ ...item, subPractices: e.target.value.split("\n").map((s) => s.trim()).filter(Boolean) })}
+                rows={4}
+                placeholder={"Sub-Practice 1\nSub-Practice 2\nSub-Practice 3"}
+              />
+            </div>
+          </div>
+        )}
+      />
     </Section>
   );
 }
