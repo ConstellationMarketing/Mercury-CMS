@@ -17,6 +17,7 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
       <IntroSection content={content} update={update} />
       <CardsSection content={content} update={update} />
       <VideoSectionEditor content={content} update={update} />
+      <PracticeCtaEditor content={content} update={update} />
       <GridSection content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
@@ -114,6 +115,30 @@ function CardsSection({ content, update }: SectionProps) {
           </div>
         )}
       />
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function PracticeCtaEditor({ content, update }: SectionProps) {
+  const pc = content.practiceCta;
+  const set = (patch: Partial<typeof pc>) => update("practiceCta", { ...pc, ...patch });
+
+  return (
+    <Section title="Need Legal Assistance (CTA)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div><Label>Heading</Label><Input value={pc?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="NEED LEGAL ASSISTANCE?" /></div>
+        <div><Label>Subtitle</Label><Input value={pc?.subtitle || ""} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Contact our experienced legal team today..." /></div>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Phone (digits)</Label><Input value={pc?.phone || ""} onChange={(e) => set({ phone: e.target.value })} placeholder="4045555555" /></div>
+          <div><Label>Phone Display</Label><Input value={pc?.phoneDisplay || ""} onChange={(e) => set({ phoneDisplay: e.target.value })} placeholder="404-555-5555" /></div>
+        </div>
+        <p className="text-xs text-gray-500 italic">Leave phone blank to use the number from Site Settings.</p>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Button Text</Label><Input value={pc?.ctaText || ""} onChange={(e) => set({ ctaText: e.target.value })} placeholder="GET HELP NOW" /></div>
+          <div><Label>Button URL</Label><Input value={pc?.ctaUrl || ""} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" /></div>
+        </div>
+      </div>
     </Section>
   );
 }

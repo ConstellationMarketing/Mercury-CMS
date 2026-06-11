@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import PracticeAreaCard from "@site/components/practice/PracticeAreaCard";
@@ -153,6 +154,55 @@ export default function PracticeAreas() {
 
       {/* Video + Text Section */}
       <PracticeAreasVideoSection content={content.videoSection} />
+
+      {/* Need Legal Assistance CTA */}
+      <div style={{ backgroundColor: "rgb(235,235,235)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+        <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 1440, paddingBottom: 27, paddingTop: 27, width: "80%" }}>
+          <div style={{ textAlign: "center" }}>
+            <h2
+              className="font-archivo font-bold"
+              style={{ color: "rgb(0,0,0)", fontSize: 52, lineHeight: "52px", paddingBottom: 20, wordBreak: "break-word" }}
+            >
+              {content.practiceCta?.heading || "NEED LEGAL ASSISTANCE?"}
+            </h2>
+            <p
+              className="font-archivo"
+              style={{ color: "rgb(43,43,43)", fontSize: 24, fontWeight: 300, lineHeight: "34px", marginBottom: 30, wordBreak: "break-word" }}
+            >
+              {content.practiceCta?.subtitle || "Contact our experienced legal team today. We're available 24/7."}
+            </p>
+            <div style={{ marginBottom: 30, textAlign: "center" }}>
+              <a
+                href={`tel:${content.practiceCta?.phone || phoneNumber}`}
+                className="font-archivo font-bold hover:opacity-80 transition-opacity duration-150"
+                style={{ color: "rgb(94,6,14)", fontSize: 48, lineHeight: "72px" }}
+              >
+                {content.practiceCta?.phoneDisplay || phoneDisplay}
+              </a>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Link
+                to={content.practiceCta?.ctaUrl || "/contact"}
+                className="font-archivo hover:opacity-90 transition-opacity duration-300"
+                style={{
+                  backgroundColor: "rgb(252,200,47)",
+                  borderRadius: 16,
+                  color: "rgb(17,71,36)",
+                  fontSize: 26,
+                  lineHeight: "44.2px",
+                  paddingBottom: 14,
+                  paddingLeft: 26,
+                  paddingRight: 26,
+                  paddingTop: 14,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {content.practiceCta?.ctaText || "GET HELP NOW"}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </Layout>
   );

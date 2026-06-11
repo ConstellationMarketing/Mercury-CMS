@@ -696,6 +696,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
         ? cmsContent.videoSection.paragraphs
         : defaults.videoSection.paragraphs,
     },
+    practiceCta: { ...defaults.practiceCta, ...cmsContent.practiceCta },
     grid: {
       ...defaults.grid,
       ...cmsContent.grid,
