@@ -9,8 +9,8 @@ interface HeroSectionProps {
 export default function HeroSection({ content }: HeroSectionProps) {
   const { settings } = useSiteSettings();
 
-  const ctaText = settings.headerCtaText?.trim() || "GET HELP NOW";
-  const ctaUrl = settings.headerCtaUrl?.trim() || "/contact";
+  const ctaText = content.ctaText?.trim() || settings.headerCtaText?.trim() || "GET HELP NOW";
+  const ctaUrl = content.ctaUrl?.trim() || settings.headerCtaUrl?.trim() || "/contact";
 
   const foundedYear = content.foundedYear || "SINCE 2010";
   const statNumber = content.statNumber || "BILLIONS";

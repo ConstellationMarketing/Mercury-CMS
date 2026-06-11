@@ -121,6 +121,18 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.awardBadgeAlt} onChange={(e) => set({ awardBadgeAlt: e.target.value })} />
         </div>
 
+        <h4 className="font-medium mt-2 border-t pt-3">CTA Button</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Button Text</Label>
+            <Input value={hero.ctaText} onChange={(e) => set({ ctaText: e.target.value })} placeholder="GET HELP NOW" />
+          </div>
+          <div>
+            <Label>Button URL</Label>
+            <Input value={hero.ctaUrl} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" />
+          </div>
+        </div>
+
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
     </Section>

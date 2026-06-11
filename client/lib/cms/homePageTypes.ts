@@ -16,6 +16,8 @@ export interface HeroContent {
   attorneyImage: string;     // right column person bg image URL
   awardBadgeImage: string;   // award badge image URL
   awardBadgeAlt: string;
+  ctaText: string;           // e.g. "GET HELP NOW"
+  ctaUrl: string;            // e.g. "/contact"
 }
 
 export interface PartnerLogo {
@@ -256,6 +258,8 @@ export const defaultHomeContent: HomePageContent = {
     attorneyImage: "",
     awardBadgeImage: "",
     awardBadgeAlt: "",
+    ctaText: "",
+    ctaUrl: "",
   },
   teamSection: {
     heading: "",
