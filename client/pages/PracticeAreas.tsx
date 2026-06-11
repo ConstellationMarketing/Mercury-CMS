@@ -1,65 +1,15 @@
 import { Link } from "react-router-dom";
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
-import PracticeAreaCard from "@site/components/practice/PracticeAreaCard";
-import CallBox from "@site/components/shared/CallBox";
-import {
-  Phone,
-  Calendar,
-  Scale,
-  Car,
-  Briefcase,
-  Users,
-  Home,
-  DollarSign,
-  FileText,
-  Heart,
-  Shield,
-  TrendingUp,
-  Stethoscope,
-  Building,
-  type LucideIcon,
-} from "lucide-react";
 import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
 import PracticeAreasCardsSection from "@site/components/practice/PracticeAreasCardsSection";
 import PracticeAreasVideoSection from "@site/components/practice/PracticeAreasVideoSection";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
-import RichText from "@site/components/shared/RichText";
-import DynamicHeading from "@site/components/shared/DynamicHeading";
 import { Loader2 } from "lucide-react";
-
-// Icon mapping for practice areas
-const iconMap: Record<string, LucideIcon> = {
-  Car,
-  Stethoscope,
-  Briefcase,
-  Heart,
-  Building,
-  Shield,
-  Scale,
-  FileText,
-  Users,
-  Home,
-  DollarSign,
-  TrendingUp,
-};
 
 export default function PracticeAreas() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = usePracticeAreasContent();
-  const { phoneNumber, phoneDisplay, phoneLabel } = useGlobalPhone();
-
-  // Map practice areas from CMS content with icon components
-  const practiceAreas = content.grid.areas.map((area) => ({
-    icon: iconMap[area.icon] || Scale,
-    title: area.title,
-    description: area.description,
-    image: area.image,
-    imageAlt: area.imageAlt,
-    link: area.link,
-  }));
-
-  // Map why choose items from CMS content
-  const whyChooseOurPractice = content.whyChoose.items;
+  const { phoneNumber, phoneDisplay } = useGlobalPhone();
 
   if (isLoading) {
     return (
