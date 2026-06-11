@@ -100,6 +100,27 @@ export interface CTAContent {
   };
 }
 
+export interface AboutTeamMemberItem {
+  name: string;
+  role: string;
+  image: string;
+  imageAlt?: string;
+  bio?: string;
+}
+
+export interface AboutFeaturedAttorney extends AboutTeamMemberItem {
+  email: string;
+  phone: string;
+  phoneDisplay: string;
+  facebookUrl: string;
+  instagramUrl: string;
+}
+
+export interface AboutTeamMembersContent {
+  featured: AboutFeaturedAttorney;
+  members: AboutTeamMemberItem[];
+}
+
 export interface AboutTeamSectionContent {
   heading: string;
   subtext: string;
@@ -110,6 +131,7 @@ export interface AboutPageContent {
   hero: AboutHeroContent;
   story: StoryContent;
   teamSection: AboutTeamSectionContent;
+  teamMembers: AboutTeamMembersContent;
   missionVision: MissionVisionContent;
   team: TeamContent;
   values: ValuesContent;
@@ -144,6 +166,21 @@ export const defaultAboutContent: AboutPageContent = {
   teamSection: {
     heading: "",
     subtext: "",
+  },
+  teamMembers: {
+    featured: {
+      name: "",
+      role: "",
+      image: "",
+      imageAlt: "",
+      bio: "",
+      email: "",
+      phone: "",
+      phoneDisplay: "",
+      facebookUrl: "",
+      instagramUrl: "",
+    },
+    members: [],
   },
   missionVision: {
     mission: {

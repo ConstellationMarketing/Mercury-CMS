@@ -16,6 +16,7 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
       <HeroSection content={content} update={update} />
       <StorySection content={content} update={update} />
       <TeamSectionHeadingEditor content={content} update={update} />
+      <AboutTeamMembersEditor content={content} update={update} />
       <MissionVisionSection content={content} update={update} />
       <TeamSection content={content} update={update} />
       <ValuesSection content={content} update={update} />
@@ -82,6 +83,54 @@ function TeamSectionHeadingEditor({ content, update }: SectionProps) {
           <Label>Subtext</Label>
           <Input value={ts?.subtext || ""} onChange={(e) => set({ subtext: e.target.value })} placeholder="Meet the entire legal team" />
         </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function AboutTeamMembersEditor({ content, update }: SectionProps) {
+  const tm = content.teamMembers;
+  const setFeatured = (patch: Partial<typeof tm.featured>) =>
+    update("teamMembers", { ...tm, featured: { ...tm.featured, ...patch } });
+
+  return (
+    <Section title="Team Members" defaultOpen={false}>
+      <div className="grid gap-4">
+        <h4 className="font-medium">Featured Attorney</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Name</Label><Input value={tm.featured.name} onChange={(e) => setFeatured({ name: e.target.value })} /></div>
+          <div><Label>Role</Label><Input value={tm.featured.role} onChange={(e) => setFeatured({ role: e.target.value })} placeholder="LAWYER AND FOUNDER" /></div>
+        </div>
+        <ImageField label="Photo" value={tm.featured.image} onChange={(url) => setFeatured({ image: url })} altValue={tm.featured.imageAlt || ""} onAltChange={(imageAlt) => setFeatured({ imageAlt })} onSelectAsset={(a) => setFeatured({ image: a.url, imageAlt: a.suggestedAltText || tm.featured.imageAlt })} folder="team" />
+        <div><Label>Bio</Label><Textarea value={tm.featured.bio || ""} onChange={(e) => setFeatured({ bio: e.target.value })} rows={3} /></div>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Email</Label><Input value={tm.featured.email} onChange={(e) => setFeatured({ email: e.target.value })} /></div>
+          <div><Label>Phone Display</Label><Input value={tm.featured.phoneDisplay} onChange={(e) => setFeatured({ phoneDisplay: e.target.value })} placeholder="404-555-5555" /></div>
+        </div>
+        <div><Label>Phone (digits for tel: link)</Label><Input value={tm.featured.phone} onChange={(e) => setFeatured({ phone: e.target.value })} /></div>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Facebook URL</Label><Input value={tm.featured.facebookUrl} onChange={(e) => setFeatured({ facebookUrl: e.target.value })} /></div>
+          <div><Label>Instagram URL</Label><Input value={tm.featured.instagramUrl} onChange={(e) => setFeatured({ instagramUrl: e.target.value })} /></div>
+        </div>
+
+        <h4 className="font-medium mt-2 border-t pt-3">Team Grid (3 columns)</h4>
+        <ArrayEditor
+          items={tm.members}
+          onChange={(members) => update("teamMembers", { ...tm, members })}
+          itemLabel="Member"
+          newItem={() => ({ name: "", role: "", image: "", imageAlt: "", bio: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div><Label>Name</Label><Input value={item.name} onChange={(e) => upd({ ...item, name: e.target.value })} /></div>
+                <div><Label>Role</Label><Input value={item.role} onChange={(e) => upd({ ...item, role: e.target.value })} placeholder="ATTORNEY" /></div>
+              </div>
+              <ImageField label="Photo" value={item.image} onChange={(url) => upd({ ...item, image: url })} altValue={item.imageAlt || ""} onAltChange={(imageAlt) => upd({ ...item, imageAlt })} onSelectAsset={(a) => upd({ ...item, image: a.url, imageAlt: a.suggestedAltText || item.imageAlt })} folder="team" />
+              <div><Label>Bio</Label><Textarea value={item.bio || ""} onChange={(e) => upd({ ...item, bio: e.target.value })} rows={2} /></div>
+            </div>
+          )}
+        />
       </div>
     </Section>
   );
