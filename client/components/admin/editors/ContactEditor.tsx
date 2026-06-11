@@ -13,7 +13,6 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
 
   return (
     <div className="space-y-6">
-      <HeroSection content={content} update={update} />
       <ContactMethodsSection content={content} update={update} />
       <FormSection content={content} update={update} />
       <OfficeHoursSection content={content} update={update} />
