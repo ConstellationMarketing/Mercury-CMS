@@ -261,68 +261,6 @@ export default function AboutUs() {
 
 
 
-      {/* Why Choose Us Section */}
-      {whyChooseUs.length > 0 && (
-      <div className="bg-white pt-[30px] md:pt-[40px] pb-[40px] md:pb-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Heading + Image */}
-            <div>
-              <div className="mb-[10px]">
-                <DynamicHeading
-                  tag={content.headingTags?.["whyChooseUs.sectionLabel"]}
-                  defaultTag="h2"
-                  className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
-                >
-                  {content.whyChooseUs.sectionLabel}
-                </DynamicHeading>
-              </div>
-              <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[20px]">
-                {content.whyChooseUs.heading}
-              </p>
-              <RichText
-                html={content.whyChooseUs.description}
-                className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black mb-[30px]"
-              />
-              {/* Stock image */}
-              {content.whyChooseUs.image && (
-                <div className="hidden lg:block">
-                  <img
-                    src={content.whyChooseUs.image}
-                    alt={content.whyChooseUs.imageAlt || "Why Choose Us"}
-                    className="w-full max-w-[400px] h-auto object-cover"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Right Side - Features List */}
-            <div className="space-y-[20px] md:space-y-[30px]">
-              {whyChooseUs.map((feature, index) => (
-                <div key={index}>
-                  <div className="mb-[15px] md:mb-[20px]">
-                    <h3 className="font-outfit text-[22px] md:text-[28px] leading-tight md:leading-[28px] text-black pb-[10px]">
-                      {feature.number}. {feature.title}
-                    </h3>
-                    <RichText
-                      html={feature.description}
-                      className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                    />
-                  </div>
-                  {index < whyChooseUs.length - 1 && (
-                    <div className="h-[1px] bg-brand-border/30"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      )}
 
       {/* Call to Action Section */}
       {content.cta.heading && (
