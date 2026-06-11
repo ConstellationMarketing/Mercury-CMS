@@ -61,10 +61,24 @@ export interface PracticeAreasIntroContent {
   text: string;
 }
 
+export interface PracticeAreaCardItem {
+  iconImage: string;
+  iconImageAlt: string;
+  title: string;
+  description: string;
+  tags: string;
+  link: string;
+}
+
+export interface PracticeAreasCardsContent {
+  areas: PracticeAreaCardItem[];
+}
+
 // Complete Practice Areas page content structure
 export interface PracticeAreasPageContent {
   hero: PracticeAreasHeroContent;
   intro: PracticeAreasIntroContent;
+  cards: PracticeAreasCardsContent;
   grid: PracticeAreasGridContent;
   whyChoose: WhyChooseContent;
   cta: CTAContent;
@@ -86,6 +100,9 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
   },
   intro: {
     text: "",
+  },
+  cards: {
+    areas: [],
   },
   grid: {
     heading: "",

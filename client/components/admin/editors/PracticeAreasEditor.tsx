@@ -15,6 +15,7 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
       <IntroSection content={content} update={update} />
+      <CardsSection content={content} update={update} />
       <GridSection content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
@@ -79,6 +80,39 @@ function IntroSection({ content, update }: SectionProps) {
           />
         </div>
       </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function CardsSection({ content, update }: SectionProps) {
+  const cards = content.cards;
+  return (
+    <Section title="Practice Area Cards" defaultOpen={false}>
+      <ArrayEditor
+        items={cards?.areas || []}
+        onChange={(areas) => update("cards", { areas })}
+        itemLabel="Card"
+        newItem={() => ({ iconImage: "", iconImageAlt: "", title: "", description: "", tags: "", link: "" })}
+        renderItem={(item, _, upd) => (
+          <div className="grid gap-3">
+            <div className="grid grid-cols-2 gap-3">
+              <div><Label>Title</Label><Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} /></div>
+              <div><Label>Link URL</Label><Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/personal-injury" /></div>
+            </div>
+            <ImageField
+              label="Icon Image (112×112)"
+              value={item.iconImage}
+              onChange={(url) => upd({ ...item, iconImage: url })}
+              altValue={item.iconImageAlt}
+              onAltChange={(iconImageAlt) => upd({ ...item, iconImageAlt })}
+              folder="icons"
+            />
+            <div><Label>Description</Label><Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} rows={2} /></div>
+            <div><Label>Tags (bullet-separated)</Label><Input value={item.tags} onChange={(e) => upd({ ...item, tags: e.target.value })} placeholder="Tag One • Tag Two • Tag Three" /></div>
+          </div>
+        )}
+      />
     </Section>
   );
 }

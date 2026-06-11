@@ -20,6 +20,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
+import PracticeAreasCardsSection from "@site/components/practice/PracticeAreasCardsSection";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -145,6 +146,9 @@ export default function PracticeAreas() {
           </div>
         </div>
       </div>
+
+      {/* Practice Areas Cards Grid */}
+      <PracticeAreasCardsSection content={content.cards} />
 
       {/* Why Choose Our Practice Section */}
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
