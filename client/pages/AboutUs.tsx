@@ -121,7 +121,6 @@ export default function AboutUs() {
       </div>
 
       {/* Our Story Section */}
-      {(content.story.heading || content.story.paragraphs.length > 0) && (
       <div style={{ backgroundColor: "rgb(255,255,255)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
         <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 2560, paddingBottom: 27, paddingTop: 27, width: "90%" }}>
           <div style={{ display: "flex", gap: "5.5%" }}>
@@ -136,7 +135,7 @@ export default function AboutUs() {
                 </h2>
               </div>
               <div style={{ marginBottom: 20 }}>
-                {content.story.paragraphs.map((paragraph, index) => (
+                {content.story.paragraphs.length > 0 ? content.story.paragraphs.map((paragraph, index) => (
                   <p
                     key={index}
                     className="font-archivo"
@@ -150,29 +149,33 @@ export default function AboutUs() {
                     }}
                     dangerouslySetInnerHTML={{ __html: paragraph }}
                   />
-                ))}
+                )) : (
+                  <>
+                    <p className="font-archivo" style={{ color: "rgb(0,0,0)", fontSize: "25.6512px", fontWeight: 300, lineHeight: "35.1437px", marginBottom: 20 }}>Constellation Law has been serving the Atlanta community since 2010, fighting tirelessly for the rights of injury victims. Our team of dedicated attorneys brings over 100 years of combined legal experience to every case we handle.</p>
+                    <p className="font-archivo" style={{ color: "rgb(0,0,0)", fontSize: "25.6512px", fontWeight: 300, lineHeight: "35.1437px", marginBottom: 20 }}>We believe in personalized attention and aggressive representation. When you hire Constellation Law, you're not just getting a lawyer – you're getting a team of advocates who will fight for maximum compensation.</p>
+                    <p className="font-archivo" style={{ color: "rgb(0,0,0)", fontSize: "25.6512px", fontWeight: 300, lineHeight: "35.1437px" }}>Our track record speaks for itself: billions won for our clients, a 99% satisfaction rating, and recognition as one of Atlanta's premier personal injury firms.</p>
+                  </>
+                )}
               </div>
-              {(content.story.ctaText || content.story.ctaUrl) && (
-                <div style={{ marginTop: 40 }}>
-                  <Link
-                    to={content.story.ctaUrl || "/contact"}
-                    className="font-archivo inline-block hover:opacity-90 transition-opacity duration-300"
-                    style={{
-                      backgroundColor: "rgb(252,200,47)",
-                      borderRadius: 16,
-                      color: "rgb(17,71,36)",
-                      fontSize: 26,
-                      lineHeight: "44.2px",
-                      paddingTop: 14,
-                      paddingBottom: 14,
-                      paddingLeft: 26,
-                      paddingRight: 26,
-                    }}
-                  >
-                    {content.story.ctaText || "GET HELP NOW"}
-                  </Link>
-                </div>
-              )}
+              <div style={{ marginTop: 40 }}>
+                <Link
+                  to={content.story.ctaUrl || "/contact"}
+                  className="font-archivo inline-block hover:opacity-90 transition-opacity duration-300"
+                  style={{
+                    backgroundColor: "rgb(252,200,47)",
+                    borderRadius: 16,
+                    color: "rgb(17,71,36)",
+                    fontSize: 26,
+                    lineHeight: "44.2px",
+                    paddingTop: 14,
+                    paddingBottom: 14,
+                    paddingLeft: 26,
+                    paddingRight: 26,
+                  }}
+                >
+                  {content.story.ctaText || "GET HELP NOW"}
+                </Link>
+              </div>
             </div>
 
             {/* Right column - image */}
@@ -189,8 +192,6 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-
-      )}
 
       {/* Mission & Vision Section */}
       {(content.missionVision.mission.heading || content.missionVision.vision.heading) && (
