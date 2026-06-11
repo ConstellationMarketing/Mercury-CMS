@@ -65,14 +65,11 @@ export default function PracticeAreasCardsSection({ content }: Props) {
                 </div>
 
                 {/* Description */}
-                <div style={{ marginBottom: 15, textAlign: "center" }}>
-                  <p
-                    className="font-archivo"
-                    style={{ color: "rgb(60,60,60)", fontSize: 18, fontWeight: 300, lineHeight: "26px", wordBreak: "break-word" }}
-                  >
-                    {area.description}
-                  </p>
-                </div>
+                <div
+                  className="font-archivo"
+                  style={{ color: "rgb(60,60,60)", fontSize: 18, fontWeight: 300, lineHeight: "26px", wordBreak: "break-word", marginBottom: 15, textAlign: "center" }}
+                  dangerouslySetInnerHTML={{ __html: area.description }}
+                />
 
                 {/* Learn More link */}
                 <div style={{ textAlign: "center" }}>

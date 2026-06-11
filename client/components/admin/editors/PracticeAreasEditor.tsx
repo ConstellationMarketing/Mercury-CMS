@@ -111,7 +111,7 @@ function CardsSection({ content, update }: SectionProps) {
               onAltChange={(iconImageAlt) => upd({ ...item, iconImageAlt })}
               folder="icons"
             />
-            <div><Label>Description</Label><Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} rows={2} /></div>
+            <RichTextField label="Description" value={item.description} onChange={(v) => upd({ ...item, description: v })} />
           </div>
         )}
       />
