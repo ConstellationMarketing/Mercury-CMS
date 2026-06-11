@@ -113,26 +113,6 @@ export default function PracticeAreas() {
         </div>
       </div>
 
-      {/* Practice Areas Grid Section */}
-      <div className="bg-white py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="text-center mb-[30px] md:mb-[50px]">
-            <h2 className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black">
-              {content.grid.heading}
-            </h2>
-            <RichText
-              html={content.grid.description}
-              className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80 mt-[15px] max-w-[800px] mx-auto"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {practiceAreas.map((area, index) => (
-              <PracticeAreaCard key={index} {...area} />
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Why Choose Our Practice Section */}
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
