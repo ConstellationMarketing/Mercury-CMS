@@ -76,6 +76,59 @@ export default function ContactPage() {
         updatedTime={updatedAt}
       />
 
+      {/* Hero Section */}
+      <div style={{ backgroundColor: "rgb(255,255,255)", paddingTop: 24, paddingBottom: 24, paddingLeft: 32, paddingRight: 32, width: "100%" }}>
+        <div
+          style={{
+            backgroundImage: `url("${content.hero.backgroundImage || "https://designs-mercury.netlify.app/images/image-7-min.jpg"}")`,
+            backgroundPosition: "50% 50%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            borderRadius: 10,
+            marginLeft: "auto",
+            marginRight: "auto",
+            maxWidth: "98%",
+            overflow: "hidden",
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+              maxWidth: 2560,
+              paddingBottom: 120,
+              paddingTop: 120,
+              width: "80%",
+            }}
+          >
+            <div style={{ textAlign: "center", width: "100%" }}>
+              <div style={{ marginBottom: 20, textAlign: "center" }}>
+                <h1
+                  className="font-archivo font-bold uppercase"
+                  style={{ color: "rgb(255,255,255)", fontSize: "102.451px", lineHeight: "102.451px", wordBreak: "break-word" }}
+                >
+                  {content.hero.h1Title || "GET IN TOUCH"}
+                </h1>
+              </div>
+              <div style={{ marginBottom: "3.093%", textAlign: "center" }}>
+                <p
+                  className="font-archivo uppercase"
+                  style={{ color: "rgb(255,255,255)", fontSize: 36, lineHeight: "54px" }}
+                >
+                  {content.hero.subtitle || "We're Here to Help 24/7"}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 
 

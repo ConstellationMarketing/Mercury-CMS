@@ -1,5 +1,5 @@
 import type { ContactPageContent } from "@site/lib/cms/contactPageTypes";
-import { Section, ArrayEditor, GlobalSectionInfo, RichTextField, HeadingField, Input, Label, Textarea } from "./EditorShared";
+import { Section, ArrayEditor, GlobalSectionInfo, RichTextField, HeadingField, Input, Label, Textarea, ImageField } from "./EditorShared";
 
 interface ContactEditorProps {
   content: ContactPageContent;
@@ -13,6 +13,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
 
   return (
     <div className="space-y-6">
+      <ContactHeroEditor content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
   );
@@ -21,6 +22,32 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
 /* ------------------------------------------------------------------ */
 type Updater = <K extends keyof ContactPageContent>(key: K, value: ContactPageContent[K]) => void;
 type SectionProps = { content: ContactPageContent; update: Updater };
+
+/* ------------------------------------------------------------------ */
+function ContactHeroEditor({ content, update }: SectionProps) {
+  const hero = content.hero;
+  const set = (patch: Partial<typeof hero>) => update("hero", { ...hero, ...patch });
+  return (
+    <Section title="Hero Section">
+      <div className="grid gap-4">
+        <div>
+          <Label>H1 Title</Label>
+          <Input value={hero.h1Title || ""} onChange={(e) => set({ h1Title: e.target.value })} placeholder="GET IN TOUCH" />
+        </div>
+        <div>
+          <Label>Subtitle</Label>
+          <Input value={hero.subtitle || ""} onChange={(e) => set({ subtitle: e.target.value })} placeholder="We're Here to Help 24/7" />
+        </div>
+        <ImageField
+          label="Background Image"
+          value={hero.backgroundImage || ""}
+          onChange={(url) => set({ backgroundImage: url })}
+          folder="backgrounds"
+        />
+      </div>
+    </Section>
+  );
+}
 
 function useHeadingTag(content: ContactPageContent, update: Updater) {
   return {
