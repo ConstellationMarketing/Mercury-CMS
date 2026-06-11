@@ -31,11 +31,14 @@ export interface ContactInfoSectionContent {
   phone: string;
   phoneDisplay: string;
   phoneLabel: string;
+  phoneIcon?: string;
   email: string;
   emailLabel: string;
+  emailIcon?: string;
   addressLine1: string;
   addressLine2: string;
   addressLabel: string;
+  addressIcon?: string;
 }
 
 export interface ContactMethodItem {
@@ -151,11 +154,14 @@ export const defaultContactContent: ContactPageContent = {
     phone: "",
     phoneDisplay: "",
     phoneLabel: "",
+    phoneIcon: "",
     email: "",
     emailLabel: "",
+    emailIcon: "",
     addressLine1: "",
     addressLine2: "",
     addressLabel: "",
+    addressIcon: "",
   },
   contactMethods: {
     methods: [],

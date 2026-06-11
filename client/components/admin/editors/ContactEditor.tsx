@@ -116,6 +116,7 @@ function ContactInfoEditor({ content, update }: SectionProps) {
     <Section title="Contact Info (Phone / Email / Address)" defaultOpen={false}>
       <div className="grid gap-4">
         <h4 className="font-medium">Phone</h4>
+        <ImageField label="Phone Icon" value={ci?.phoneIcon || ""} onChange={(url) => set({ phoneIcon: url })} folder="icons" />
         <div className="grid grid-cols-2 gap-4">
           <div><Label>Phone (digits)</Label><Input value={ci?.phone || ""} onChange={(e) => set({ phone: e.target.value })} placeholder="4045555555" /></div>
           <div><Label>Phone Display</Label><Input value={ci?.phoneDisplay || ""} onChange={(e) => set({ phoneDisplay: e.target.value })} placeholder="404-555-5555" /></div>
@@ -124,10 +125,12 @@ function ContactInfoEditor({ content, update }: SectionProps) {
         <p className="text-xs text-gray-500 italic">Leave phone blank to use the number from Site Settings.</p>
         <hr />
         <h4 className="font-medium">Email</h4>
+        <ImageField label="Email Icon" value={ci?.emailIcon || ""} onChange={(url) => set({ emailIcon: url })} folder="icons" />
         <div><Label>Email Address</Label><Input value={ci?.email || ""} onChange={(e) => set({ email: e.target.value })} placeholder="info@constellationlaw.com" /></div>
         <div><Label>Email Label</Label><Input value={ci?.emailLabel || ""} onChange={(e) => set({ emailLabel: e.target.value })} placeholder="We respond within 24 hours" /></div>
         <hr />
         <h4 className="font-medium">Address</h4>
+        <ImageField label="Address Icon" value={ci?.addressIcon || ""} onChange={(url) => set({ addressIcon: url })} folder="icons" />
         <div className="grid grid-cols-2 gap-4">
           <div><Label>Address Line 1</Label><Input value={ci?.addressLine1 || ""} onChange={(e) => set({ addressLine1: e.target.value })} placeholder="PO Box 170027" /></div>
           <div><Label>Address Line 2</Label><Input value={ci?.addressLine2 || ""} onChange={(e) => set({ addressLine2: e.target.value })} placeholder="Atlanta, GA 30317-9998" /></div>
