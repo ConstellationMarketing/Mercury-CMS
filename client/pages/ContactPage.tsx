@@ -80,43 +80,6 @@ export default function ContactPage() {
 
 
 
-      {/* Map Section */}
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <div className="text-center mb-[30px] md:mb-[40px]">
-            <h2 className="font-playfair text-[32px] md:text-[48px] leading-tight text-white pb-[10px]">
-              {content.visitOffice.heading}
-            </h2>
-            {content.visitOffice.subtext && (
-              <RichText
-                html={content.visitOffice.subtext}
-                className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80"
-              />
-            )}
-          </div>
-
-          {(() => {
-            const raw = content.visitOffice.mapEmbedUrl || settings.mapEmbedUrl || "";
-            const mapSrc = raw.startsWith("<")
-              ? (raw.match(/src="([^"]+)"/) || [])[1] || ""
-              : raw;
-            return mapSrc ? (
-              <div className="bg-brand-card border border-brand-border p-[20px] md:p-[30px]">
-                <iframe
-                  src={mapSrc}
-                  width="100%"
-                  height="450"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-[350px] md:h-[450px]"
-                  title="Office Location"
-                ></iframe>
-              </div>
-            ) : null;
-          })()}
-        </div>
-      </div>
     </Layout>
   );
 }
