@@ -109,15 +109,6 @@ export default function PracticeAreas() {
               />
             </div>
 
-            {/* Right Side - CallBox */}
-            <div className="w-full lg:w-[30%] lg:flex lg:items-center">
-              <CallBox
-                icon={Phone}
-                title={phoneLabel}
-                subtitle={phoneDisplay}
-                phone={phoneNumber}
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -217,24 +208,6 @@ export default function PracticeAreas() {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center md:items-start">
-            <CallBox
-              icon={Phone}
-              title={phoneLabel}
-              subtitle={phoneDisplay}
-              phone={phoneNumber}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-            <CallBox
-              icon={Calendar}
-              title={content.cta.secondaryButton.label}
-              subtitle={content.cta.secondaryButton.sublabel}
-              link={content.cta.secondaryButton.link}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-          </div>
         </div>
       </div>
     </Layout>

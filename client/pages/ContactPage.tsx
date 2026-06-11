@@ -1,7 +1,6 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import ContactForm from "@site/components/home/ContactForm";
-import CallBox from "@site/components/shared/CallBox";
 import {
   Phone,
   Mail,
@@ -210,21 +209,6 @@ export default function ContactPage() {
               </div>
 
               {/* Call to Action Boxes */}
-              <div className="space-y-[20px]">
-                <CallBox
-                  icon={Phone}
-                  title={phoneLabel}
-                  subtitle={phoneDisplay}
-                  phone={phoneNumber}
-                  className="w-full max-w-none"
-                />
-                <CallBox
-                  icon={Calendar}
-                  title={content.cta.secondaryButton.label}
-                  subtitle={content.cta.secondaryButton.sublabel}
-                  className="w-full max-w-none"
-                />
-              </div>
             </div>
           </div>
         </div>

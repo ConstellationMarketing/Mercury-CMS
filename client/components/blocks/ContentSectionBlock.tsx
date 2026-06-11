@@ -1,7 +1,4 @@
-import { Phone, Calendar } from "lucide-react";
 import type { ContentBlock } from "@site/lib/blocks";
-import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
-import CallBox from "@site/components/shared/CallBox";
 import RichText from "@site/components/shared/RichText";
 
 interface ContentSectionBlockProps {
@@ -10,7 +7,6 @@ interface ContentSectionBlockProps {
 }
 
 export default function ContentSectionBlock({ block, index }: ContentSectionBlockProps) {
-  const { phoneNumber, phoneDisplay, phoneLabel } = useGlobalPhone();
   const imageOnLeft = block.imagePosition === "left";
   const showCTAs = block.showCTAs !== false;
   const hasSidebar = showCTAs || !!block.image;
@@ -44,22 +40,6 @@ export default function ContentSectionBlock({ block, index }: ContentSectionBloc
                 />
               )}
 
-              {showCTAs && (
-                <div className="flex flex-col gap-6">
-                  <CallBox
-                    icon={Phone}
-                    title={phoneLabel}
-                    subtitle={phoneDisplay}
-                    phone={phoneNumber}
-                  />
-                  <CallBox
-                    icon={Calendar}
-                    title="Schedule Now"
-                    subtitle="Free Consultation"
-                    link="/contact/"
-                  />
-                </div>
-              )}
             </div>
           )}
         </div>

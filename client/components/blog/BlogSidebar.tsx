@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Calendar, Phone } from "lucide-react";
-import CallBox from "@site/components/shared/CallBox";
-import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import {
   DEFAULT_BLOG_SIDEBAR,
   loadBlogSidebarData,
@@ -15,7 +12,6 @@ let hasCachedSidebar = false;
 
 export default function BlogSidebar() {
   const { pathname } = useLocation();
-  const { phoneDisplay, phoneNumber, phoneLabel } = useGlobalPhone();
   const preloadedSidebar = getPreloadedBlogSidebar(pathname);
   const initialSidebar = preloadedSidebar || (hasCachedSidebar ? cachedSidebar : DEFAULT_BLOG_SIDEBAR);
 
@@ -73,22 +69,6 @@ export default function BlogSidebar() {
           />
         </div>
       )}
-
-      <CallBox
-        icon={Phone}
-        title={phoneLabel}
-        subtitle={phoneDisplay}
-        phone={phoneNumber}
-        className="w-full md:w-full"
-      />
-
-      <CallBox
-        icon={Calendar}
-        title="Schedule Today"
-        subtitle="Book a Consultation"
-        link="/contact/"
-        className="w-full md:w-full"
-      />
 
       {awardImages.length > 0 && (
         <div className="space-y-4 pt-2">
