@@ -67,36 +67,54 @@ export default function AboutUs() {
       />
 
       {/* Hero Section */}
-      <div className="bg-brand-dark pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-[5%]">
-            {/* Left Side - Heading */}
-            <div className="lg:w-[65%]">
-              {/* H1 Title - Section Heading */}
-              <DynamicHeading
-                tag={content.headingTags?.["hero.sectionLabel"]}
-                defaultTag="h1"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]"
-              >
-                {content.hero.sectionLabel}
-              </DynamicHeading>
-              {/* Tagline - styled as large text but not H1 */}
-              <p className="font-playfair text-[clamp(2.5rem,7vw,68.8px)] font-light leading-[1.2] text-white mb-[20px] md:mb-[30px]">
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: content.hero.tagline.replace(
-                      /(Justice & Excellence|Justice|Excellence)/g,
-                      '<span class="text-brand-accent">$1</span>',
-                    ),
-                  }}
-                />
-              </p>
-              <RichText
-                html={content.hero.description}
-                className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-white/90"
-              />
+      <div style={{ backgroundColor: "rgb(255,255,255)", paddingTop: 24, paddingBottom: 24, paddingLeft: 32, paddingRight: 32, width: "100%" }}>
+        <div
+          style={{
+            backgroundImage: `url("${content.hero.backgroundImage || "https://designs-mercury.netlify.app/images/image-4-min.jpg"}")`,
+            backgroundPosition: "50% 50%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            borderRadius: 10,
+            marginLeft: "auto",
+            marginRight: "auto",
+            maxWidth: "98%",
+            overflow: "hidden",
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+              maxWidth: 2560,
+              paddingBottom: 120,
+              paddingTop: 120,
+              width: "80%",
+            }}
+          >
+            <div style={{ textAlign: "center", width: "100%" }}>
+              <div style={{ marginBottom: 20, textAlign: "center" }}>
+                <h1
+                  className="font-archivo font-bold uppercase whitespace-nowrap"
+                  style={{ color: "rgb(255,255,255)", fontSize: "102.451px", lineHeight: "102.451px" }}
+                >
+                  {content.hero.h1Title || "ABOUT US"}
+                </h1>
+              </div>
+              <div style={{ marginBottom: "3.093%", textAlign: "center" }}>
+                <p
+                  className="font-archivo uppercase"
+                  style={{ color: "rgb(255,255,255)", fontSize: 36, lineHeight: "54px" }}
+                >
+                  {content.hero.subtitle || "Serving Atlanta Since 2010"}
+                </p>
+              </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -7,6 +7,10 @@ export interface AboutHeroContent {
   description: string; // Description paragraph
   phone: string;
   phoneLabel: string;
+  // New design fields
+  h1Title: string;           // e.g. "ABOUT US"
+  subtitle: string;          // e.g. "Serving Atlanta Since 2010"
+  backgroundImage: string;   // hero bg image URL
 }
 
 export interface StoryContent {
@@ -116,6 +120,9 @@ export const defaultAboutContent: AboutPageContent = {
     description: "",
     phone: "",
     phoneLabel: "",
+    h1Title: "",
+    subtitle: "",
+    backgroundImage: "",
   },
   story: {
     sectionLabel: "",
