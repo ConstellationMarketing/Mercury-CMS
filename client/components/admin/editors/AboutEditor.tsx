@@ -20,7 +20,6 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
       <PartnerLogosEditor content={content} update={update} />
       <AboutTestimonialsEditor content={content} update={update} />
       <ReadyCTAEditor content={content} update={update} />
-      <MissionVisionSection content={content} update={update} />
       <TeamSection content={content} update={update} />
       <ValuesSection content={content} update={update} />
       <StatsSection content={content} update={update} />
