@@ -73,16 +73,6 @@ export default function PracticeAreasCardsSection({ content }: Props) {
                   </p>
                 </div>
 
-                {/* Tags */}
-                <div style={{ marginBottom: 15, textAlign: "center" }}>
-                  <p
-                    className="font-archivo"
-                    style={{ color: "rgb(60,60,60)", fontWeight: 300, wordBreak: "break-word" }}
-                  >
-                    {area.tags}
-                  </p>
-                </div>
-
                 {/* Learn More link */}
                 <div style={{ textAlign: "center" }}>
                   <Link

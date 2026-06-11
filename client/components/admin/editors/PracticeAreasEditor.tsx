@@ -111,7 +111,6 @@ function CardsSection({ content, update }: SectionProps) {
               folder="icons"
             />
             <div><Label>Description</Label><Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} rows={2} /></div>
-            <div><Label>Tags (bullet-separated)</Label><Input value={item.tags} onChange={(e) => upd({ ...item, tags: e.target.value })} placeholder="Tag One • Tag Two • Tag Three" /></div>
           </div>
         )}
       />
