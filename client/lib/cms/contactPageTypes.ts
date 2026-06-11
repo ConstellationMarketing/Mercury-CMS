@@ -104,6 +104,7 @@ export interface ContactPageContent {
   contactInfo: ContactInfoSectionContent;
   contactForm: ContactFormSectionContent;
   officeHoursSection: ContactOfficeHoursSectionContent;
+  mapSection: { mapEmbedUrl: string; };
   contactMethods: ContactMethodsContent;
   form: ContactFormContent;
   officeHours: OfficeHoursContent;
@@ -133,6 +134,9 @@ export const defaultContactContent: ContactPageContent = {
     heading: "",
     rows: [],
     note: "",
+  },
+  mapSection: {
+    mapEmbedUrl: "",
   },
   contactInfo: {
     phone: "",

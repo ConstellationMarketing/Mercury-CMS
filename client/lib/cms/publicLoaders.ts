@@ -629,6 +629,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
       ...cmsContent.officeHoursSection,
       rows: cmsContent.officeHoursSection?.rows?.length ? cmsContent.officeHoursSection.rows : defaults.officeHoursSection.rows,
     },
+    mapSection: { ...defaults.mapSection, ...cmsContent.mapSection },
     contactMethods: {
       ...defaults.contactMethods,
       ...cmsContent.contactMethods,

@@ -16,6 +16,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
       <ContactHeroEditor content={content} update={update} />
       <ContactFormEditor content={content} update={update} />
       <OfficeHoursSectionEditor content={content} update={update} />
+      <MapSectionEditor content={content} update={update} />
       <ContactInfoEditor content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
@@ -62,6 +63,23 @@ function OfficeHoursSectionEditor({ content, update }: SectionProps) {
           )}
         />
         <div><Label>Note</Label><Input value={oh?.note || ""} onChange={(e) => set({ note: e.target.value })} placeholder="Appointments available by request" /></div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function MapSectionEditor({ content, update }: SectionProps) {
+  const ms = content.mapSection;
+  const set = (patch: Partial<typeof ms>) => update("mapSection", { ...ms, ...patch });
+  return (
+    <Section title="Map Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Google Maps Embed URL</Label>
+          <Input value={ms?.mapEmbedUrl || ""} onChange={(e) => set({ mapEmbedUrl: e.target.value })} placeholder="https://www.google.com/maps/embed?pb=..." />
+        </div>
+        <p className="text-xs text-gray-500 italic">Leave blank to use the URL from Site Settings.</p>
       </div>
     </Section>
   );

@@ -138,6 +138,31 @@ export default function ContactPage() {
       {/* Office Hours Section */}
       <ContactOfficeHoursSection content={content.officeHoursSection} />
 
+      {/* Map Section */}
+      {(() => {
+        const raw = content.mapSection?.mapEmbedUrl || settings.mapEmbedUrl || "";
+        const mapSrc = raw.startsWith("<") ? (raw.match(/src="([^"]+)"/) || [])[1] || "" : raw;
+        if (!mapSrc) return null;
+        return (
+          <div style={{ backgroundColor: "rgb(255,255,255)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+            <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 2560, width: "90%" }}>
+              <div style={{ borderRadius: 10, overflow: "hidden" }}>
+                <iframe
+                  src={mapSrc}
+                  width="100%"
+                  height="450"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Atlanta Location Map"
+                  style={{ borderRadius: 10, display: "block", height: 450, width: "100%" }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Contact Info Section */}
       <ContactInfoSection
         content={content.contactInfo}
