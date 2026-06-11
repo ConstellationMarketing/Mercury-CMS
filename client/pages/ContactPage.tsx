@@ -132,6 +132,13 @@ export default function ContactPage() {
         </div>
       </div>
 
+      {/* Contact Info Section */}
+      <ContactInfoSection
+        content={content.contactInfo}
+        globalPhone={phoneNumber}
+        globalPhoneDisplay={phoneDisplay}
+      />
+
       {/* Contact Form Section */}
       <ContactFormSection content={content.contactForm} />
 
@@ -162,13 +169,6 @@ export default function ContactPage() {
           </div>
         );
       })()}
-
-      {/* Contact Info Section */}
-      <ContactInfoSection
-        content={content.contactInfo}
-        globalPhone={phoneNumber}
-        globalPhoneDisplay={phoneDisplay}
-      />
 
     </Layout>
   );
