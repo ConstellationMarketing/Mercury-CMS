@@ -275,18 +275,26 @@ export default function ContactPage() {
             )}
           </div>
 
-          <div className="bg-brand-card border border-brand-border p-[20px] md:p-[30px]">
-            <iframe
-              src={content.visitOffice.mapEmbedUrl || settings.mapEmbedUrl}
-              width="100%"
-              height="450"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-[350px] md:h-[450px]"
-              title="Office Location"
-            ></iframe>
-          </div>
+          {(() => {
+            const raw = content.visitOffice.mapEmbedUrl || settings.mapEmbedUrl || "";
+            const mapSrc = raw.startsWith("<")
+              ? (raw.match(/src="([^"]+)"/) || [])[1] || ""
+              : raw;
+            return mapSrc ? (
+              <div className="bg-brand-card border border-brand-border p-[20px] md:p-[30px]">
+                <iframe
+                  src={mapSrc}
+                  width="100%"
+                  height="450"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-[350px] md:h-[450px]"
+                  title="Office Location"
+                ></iframe>
+              </div>
+            ) : null;
+          })()}
         </div>
       </div>
     </Layout>

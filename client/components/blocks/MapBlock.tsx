@@ -25,18 +25,26 @@ export default function MapBlock({ block }: MapBlockProps) {
           </div>
         )}
 
-        <div className="w-full h-[400px] md:h-[500px]">
-          <iframe
-            src={block.mapEmbedUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Location Map"
-          />
-        </div>
+        {(() => {
+          const raw = block.mapEmbedUrl || "";
+          const mapSrc = raw.startsWith("<")
+            ? (raw.match(/src="([^"]+)"/) || [])[1] || ""
+            : raw;
+          return mapSrc ? (
+            <div className="w-full h-[400px] md:h-[500px]">
+              <iframe
+                src={mapSrc}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Location Map"
+              />
+            </div>
+          ) : null;
+        })()}
       </div>
     </div>
   );
