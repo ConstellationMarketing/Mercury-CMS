@@ -548,6 +548,7 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
     story: {
       ...defaults.story,
       ...cmsContent.story,

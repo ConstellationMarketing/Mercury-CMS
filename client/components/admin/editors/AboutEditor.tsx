@@ -15,6 +15,7 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
       <StorySection content={content} update={update} />
+      <TeamSectionHeadingEditor content={content} update={update} />
       <MissionVisionSection content={content} update={update} />
       <TeamSection content={content} update={update} />
       <ValuesSection content={content} update={update} />
@@ -60,6 +61,27 @@ function HeroSection({ content, update }: SectionProps) {
           onChange={(url) => set({ backgroundImage: url })}
           folder="backgrounds"
         />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function TeamSectionHeadingEditor({ content, update }: SectionProps) {
+  const ts = content.teamSection;
+  const set = (patch: Partial<typeof ts>) => update("teamSection", { ...ts, ...patch });
+
+  return (
+    <Section title="Team Section Heading" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input value={ts?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="OUR TEAM OF LAWYERS" />
+        </div>
+        <div>
+          <Label>Subtext</Label>
+          <Input value={ts?.subtext || ""} onChange={(e) => set({ subtext: e.target.value })} placeholder="Meet the entire legal team" />
+        </div>
       </div>
     </Section>
   );

@@ -100,10 +100,16 @@ export interface CTAContent {
   };
 }
 
+export interface AboutTeamSectionContent {
+  heading: string;
+  subtext: string;
+}
+
 // Complete About page content structure
 export interface AboutPageContent {
   hero: AboutHeroContent;
   story: StoryContent;
+  teamSection: AboutTeamSectionContent;
   missionVision: MissionVisionContent;
   team: TeamContent;
   values: ValuesContent;
@@ -134,6 +140,10 @@ export const defaultAboutContent: AboutPageContent = {
     imageAlt: "",
     ctaText: "",
     ctaUrl: "",
+  },
+  teamSection: {
+    heading: "",
+    subtext: "",
   },
   missionVision: {
     mission: {

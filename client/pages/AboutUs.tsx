@@ -15,6 +15,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useAboutContent } from "@site/hooks/useAboutContent";
+import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -192,6 +193,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+
+      {/* Team Section Heading */}
+      <TeamSectionHeading content={{ heading: content.teamSection?.heading || "", subtext: content.teamSection?.subtext || "" }} />
 
       {/* Mission & Vision Section */}
       {(content.missionVision.mission.heading || content.missionVision.vision.heading) && (
