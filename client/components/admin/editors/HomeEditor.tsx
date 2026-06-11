@@ -63,16 +63,6 @@ function HeroSection({ content, update }: SectionProps) {
           tag={ht.get("hero.h1Title") === "h2" ? "h1" : ht.get("hero.h1Title")}
           onTagChange={(t) => ht.set("hero.h1Title", t)}
         />
-        <div>
-          <Label>Full Headline</Label>
-          <Input value={hero.headline} onChange={(e) => set({ headline: e.target.value })} />
-          <p className="text-xs text-gray-500 mt-1">The complete headline sentence displayed in the hero</p>
-        </div>
-        <div>
-          <Label>Highlighted Text</Label>
-          <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
-          <p className="text-xs text-gray-500 mt-1">Enter the exact portion of the headline to display in accent color</p>
-        </div>
 
         <h4 className="font-medium mt-2 border-t pt-3">Stat Block</h4>
         <div className="grid grid-cols-2 gap-4">
