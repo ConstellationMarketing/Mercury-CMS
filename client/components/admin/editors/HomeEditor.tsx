@@ -23,7 +23,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <ContactFormSectionEditor content={content} update={update} />
       <IconPracticeAreasSectionEditor content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
-      <ContactSectionEditor content={content} update={update} />
     </div>
   );
 }
