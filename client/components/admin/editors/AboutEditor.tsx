@@ -74,19 +74,34 @@ function StorySection({ content, update }: SectionProps) {
   return (
     <Section title="Our Story" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={story.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("story.sectionLabel")}
-          onTagChange={(t) => ht.set("story.sectionLabel", t)}
-        />
         <div>
-          <Label>Subtitle</Label>
-          <Input value={story.heading} onChange={(e) => set({ heading: e.target.value })} />
+          <Label>Heading</Label>
+          <Input value={story.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Our Story" />
         </div>
+        <h4 className="font-medium mt-2">Paragraphs</h4>
+        <ArrayEditor
+          items={story.paragraphs.map((text, i) => ({ id: String(i), text }))}
+          onChange={(items) => set({ paragraphs: items.map((it) => it.text) })}
+          itemLabel="Paragraph"
+          newItem={() => ({ id: String(Date.now()), text: "" })}
+          renderItem={(item, _, upd) => (
+            <RichTextField label="" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
+          )}
+        />
+        <h4 className="font-medium mt-2 border-t pt-3">CTA Button</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Button Text</Label>
+            <Input value={story.ctaText || ""} onChange={(e) => set({ ctaText: e.target.value })} placeholder="GET HELP NOW" />
+          </div>
+          <div>
+            <Label>Button URL</Label>
+            <Input value={story.ctaUrl || ""} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" />
+          </div>
+        </div>
+        <h4 className="font-medium mt-2 border-t pt-3">Image</h4>
         <ImageField
-          label="Image"
+          label="Story Image"
           value={story.image}
           onChange={(url) => set({ image: url })}
           altValue={story.imageAlt}
@@ -101,16 +116,6 @@ function StorySection({ content, update }: SectionProps) {
           <Label>Image Alt Text</Label>
           <Input value={story.imageAlt} onChange={(e) => set({ imageAlt: e.target.value })} />
         </div>
-        <h4 className="font-medium mt-2">Paragraphs</h4>
-        <ArrayEditor
-          items={story.paragraphs.map((text, i) => ({ id: String(i), text }))}
-          onChange={(items) => set({ paragraphs: items.map((it) => it.text) })}
-          itemLabel="Paragraph"
-          newItem={() => ({ id: String(Date.now()), text: "" })}
-          renderItem={(item, _, upd) => (
-            <RichTextField label="" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
-          )}
-        />
       </div>
     </Section>
   );

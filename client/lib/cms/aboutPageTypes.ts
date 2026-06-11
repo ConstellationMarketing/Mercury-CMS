@@ -19,6 +19,8 @@ export interface StoryContent {
   paragraphs: string[]; // Array of paragraph texts
   image: string;
   imageAlt: string;
+  ctaText: string;   // e.g. "GET HELP NOW"
+  ctaUrl: string;    // e.g. "/contact"
 }
 
 export interface MissionVisionContent {
@@ -130,6 +132,8 @@ export const defaultAboutContent: AboutPageContent = {
     paragraphs: [],
     image: "",
     imageAlt: "",
+    ctaText: "",
+    ctaUrl: "",
   },
   missionVision: {
     mission: {

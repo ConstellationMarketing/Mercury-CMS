@@ -1,5 +1,6 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
+import { Link } from "react-router-dom";
 import StatsGrid from "@site/components/shared/StatsGrid";
 import TeamMemberCard from "@site/components/about/TeamMemberCard";
 import ValueCard from "@site/components/about/ValueCard";
@@ -121,47 +122,68 @@ export default function AboutUs() {
 
       {/* Our Story Section */}
       {(content.story.heading || content.story.paragraphs.length > 0) && (
-      <div className="bg-white pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Content */}
-            <div>
-              <div className="mb-[10px]">
-                <DynamicHeading
-                  tag={content.headingTags?.["story.sectionLabel"]}
-                  defaultTag="h2"
-                  className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
+      <div style={{ backgroundColor: "rgb(255,255,255)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+        <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 2560, paddingBottom: 27, paddingTop: 27, width: "90%" }}>
+          <div style={{ display: "flex", gap: "5.5%" }}>
+            {/* Left column */}
+            <div style={{ width: "47.25%" }}>
+              <div style={{ marginBottom: 10 }}>
+                <h2
+                  className="font-archivo font-bold"
+                  style={{ color: "rgb(0,0,0)", fontSize: "49.6128px", lineHeight: "49.6128px", paddingBottom: 10, wordBreak: "break-word" }}
                 >
-                  {content.story.sectionLabel}
-                </DynamicHeading>
+                  {content.story.heading || "Our Story"}
+                </h2>
               </div>
-              <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[20px]">
-                {content.story.heading}
-              </p>
-              <div className="space-y-[15px] md:space-y-[20px]">
+              <div style={{ marginBottom: 20 }}>
                 {content.story.paragraphs.map((paragraph, index) => (
-                  <RichText
+                  <p
                     key={index}
-                    html={paragraph}
-                    className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
+                    className="font-archivo"
+                    style={{
+                      color: "rgb(0,0,0)",
+                      fontSize: "25.6512px",
+                      fontWeight: 300,
+                      lineHeight: "35.1437px",
+                      marginBottom: index < content.story.paragraphs.length - 1 ? 20 : 0,
+                      wordBreak: "break-word",
+                    }}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
                   />
                 ))}
               </div>
+              {(content.story.ctaText || content.story.ctaUrl) && (
+                <div style={{ marginTop: 40 }}>
+                  <Link
+                    to={content.story.ctaUrl || "/contact"}
+                    className="font-archivo inline-block hover:opacity-90 transition-opacity duration-300"
+                    style={{
+                      backgroundColor: "rgb(252,200,47)",
+                      borderRadius: 16,
+                      color: "rgb(17,71,36)",
+                      fontSize: 26,
+                      lineHeight: "44.2px",
+                      paddingTop: 14,
+                      paddingBottom: 14,
+                      paddingLeft: 26,
+                      paddingRight: 26,
+                    }}
+                  >
+                    {content.story.ctaText || "GET HELP NOW"}
+                  </Link>
+                </div>
+              )}
             </div>
 
-            {/* Right Side - Image */}
-            <div className="flex items-center justify-center">
-              <div className="relative">
+            {/* Right column - image */}
+            <div style={{ width: "47.25%" }}>
+              <div style={{ borderRadius: 10, overflow: "hidden" }}>
                 <img
-                  src={content.story.image}
-                  alt={content.story.imageAlt}
-                  className="max-w-full w-auto h-auto object-contain"
-                  width={338}
-                  height={462}
+                  src={content.story.image || "https://designs-mercury.netlify.app/images/image-12-min.jpg"}
+                  alt={content.story.imageAlt || "Our Team"}
                   loading="lazy"
+                  style={{ height: "100%", maxWidth: "100%", objectFit: "cover", width: "100%", display: "block" }}
                 />
-                {/* Fade-out gradient at the bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-gradient-to-t from-white to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
