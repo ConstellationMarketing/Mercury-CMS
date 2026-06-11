@@ -17,6 +17,9 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
       <StorySection content={content} update={update} />
       <TeamSectionHeadingEditor content={content} update={update} />
       <AboutTeamMembersEditor content={content} update={update} />
+      <PartnerLogosEditor content={content} update={update} />
+      <AboutTestimonialsEditor content={content} update={update} />
+      <ReadyCTAEditor content={content} update={update} />
       <MissionVisionSection content={content} update={update} />
       <TeamSection content={content} update={update} />
       <ValuesSection content={content} update={update} />
@@ -186,6 +189,108 @@ function StorySection({ content, update }: SectionProps) {
         <div>
           <Label>Image Alt Text</Label>
           <Input value={story.imageAlt} onChange={(e) => set({ imageAlt: e.target.value })} />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function PartnerLogosEditor({ content, update }: SectionProps) {
+  const pl = content.partnerLogos;
+  return (
+    <Section title="Partner Logos / Awards Bar" defaultOpen={false}>
+      <ArrayEditor
+        items={pl.logos}
+        onChange={(logos) => update("partnerLogos", { logos })}
+        itemLabel="Logo"
+        newItem={() => ({ src: "", alt: "" })}
+        renderItem={(item, _, upd) => (
+          <div className="grid gap-3">
+            <ImageField
+              label="Logo Image"
+              value={item.src}
+              onChange={(url) => upd({ ...item, src: url })}
+              altValue={item.alt}
+              onAltChange={(alt) => upd({ ...item, alt })}
+              folder="logos"
+            />
+            <div>
+              <Label>Alt Text</Label>
+              <Input value={item.alt} onChange={(e) => upd({ ...item, alt: e.target.value })} />
+            </div>
+          </div>
+        )}
+      />
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function AboutTestimonialsEditor({ content, update }: SectionProps) {
+  const at = content.aboutTestimonials;
+  const set = (patch: Partial<typeof at>) => update("aboutTestimonials", { ...at, ...patch });
+
+  return (
+    <Section title="Client Testimonials" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input value={at.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="WHAT OUR CLIENTS SAY" />
+        </div>
+        <div>
+          <Label>Subtitle</Label>
+          <Input value={at.subtitle} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Real stories from real clients..." />
+        </div>
+        <ArrayEditor
+          items={at.testimonials}
+          onChange={(testimonials) => set({ testimonials })}
+          itemLabel="Testimonial"
+          newItem={() => ({ quote: "", name: "", role: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Quote</Label>
+                <Textarea value={item.quote} onChange={(e) => upd({ ...item, quote: e.target.value })} rows={3} />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div><Label>Name</Label><Input value={item.name} onChange={(e) => upd({ ...item, name: e.target.value })} /></div>
+                <div><Label>Role / Case Type</Label><Input value={item.role} onChange={(e) => upd({ ...item, role: e.target.value })} /></div>
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function ReadyCTAEditor({ content, update }: SectionProps) {
+  const rc = content.readyCta;
+  const set = (patch: Partial<typeof rc>) => update("readyCta", { ...rc, ...patch });
+
+  return (
+    <Section title="Ready to Get Started (CTA)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input value={rc.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="READY TO GET STARTED?" />
+        </div>
+        <div>
+          <Label>Subtitle</Label>
+          <Input value={rc.subtitle} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Contact us today for a free consultation..." />
+        </div>
+        <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Button Text</Label>
+            <Input value={rc.ctaText} onChange={(e) => set({ ctaText: e.target.value })} placeholder="GET HELP NOW" />
+          </div>
+          <div>
+            <Label>Button URL</Label>
+            <Input value={rc.ctaUrl} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" />
+          </div>
         </div>
       </div>
     </Section>

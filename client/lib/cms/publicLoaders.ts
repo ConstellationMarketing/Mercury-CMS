@@ -553,6 +553,17 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
       featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
       members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
     },
+    partnerLogos: {
+      logos: cmsContent.partnerLogos?.logos?.length ? cmsContent.partnerLogos.logos : defaults.partnerLogos.logos,
+    },
+    aboutTestimonials: {
+      ...defaults.aboutTestimonials,
+      ...cmsContent.aboutTestimonials,
+      testimonials: cmsContent.aboutTestimonials?.testimonials?.length
+        ? cmsContent.aboutTestimonials.testimonials
+        : defaults.aboutTestimonials.testimonials,
+    },
+    readyCta: { ...defaults.readyCta, ...cmsContent.readyCta },
     story: {
       ...defaults.story,
       ...cmsContent.story,

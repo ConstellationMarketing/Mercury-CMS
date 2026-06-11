@@ -1,3 +1,5 @@
+import type { AboutTestimonialsContent } from "@site/lib/cms/aboutPageTypes";
+
 const STAR_PATH = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z";
 
 function StarRow() {
@@ -17,19 +19,7 @@ function StarRow() {
   );
 }
 
-export interface TestimonialItem {
-  quote: string;
-  name: string;
-  role: string;
-}
-
-export interface AboutTestimonialsSectionContent {
-  heading: string;
-  subtitle: string;
-  testimonials: TestimonialItem[];
-}
-
-const DEFAULT_CONTENT: AboutTestimonialsSectionContent = {
+const DEFAULT_CONTENT: AboutTestimonialsContent = {
   heading: "WHAT OUR CLIENTS SAY",
   subtitle: "Real stories from real clients who trusted us with their cases",
   testimonials: [
@@ -52,7 +42,7 @@ const DEFAULT_CONTENT: AboutTestimonialsSectionContent = {
 };
 
 interface Props {
-  content?: Partial<AboutTestimonialsSectionContent>;
+  content?: Partial<AboutTestimonialsContent>;
 }
 
 export default function AboutTestimonialsSection({ content }: Props) {

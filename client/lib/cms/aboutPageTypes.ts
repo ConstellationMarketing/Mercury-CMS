@@ -126,12 +126,43 @@ export interface AboutTeamSectionContent {
   subtext: string;
 }
 
+export interface PartnerLogoItem {
+  src: string;
+  alt: string;
+}
+
+export interface AboutPartnerLogosContent {
+  logos: PartnerLogoItem[];
+}
+
+export interface AboutTestimonialItem {
+  quote: string;
+  name: string;
+  role: string;
+}
+
+export interface AboutTestimonialsContent {
+  heading: string;
+  subtitle: string;
+  testimonials: AboutTestimonialItem[];
+}
+
+export interface AboutReadyCTAContent {
+  heading: string;
+  subtitle: string;
+  ctaText: string;
+  ctaUrl: string;
+}
+
 // Complete About page content structure
 export interface AboutPageContent {
   hero: AboutHeroContent;
   story: StoryContent;
   teamSection: AboutTeamSectionContent;
   teamMembers: AboutTeamMembersContent;
+  partnerLogos: AboutPartnerLogosContent;
+  aboutTestimonials: AboutTestimonialsContent;
+  readyCta: AboutReadyCTAContent;
   missionVision: MissionVisionContent;
   team: TeamContent;
   values: ValuesContent;
@@ -181,6 +212,20 @@ export const defaultAboutContent: AboutPageContent = {
       instagramUrl: "",
     },
     members: [],
+  },
+  partnerLogos: {
+    logos: [],
+  },
+  aboutTestimonials: {
+    heading: "",
+    subtitle: "",
+    testimonials: [],
+  },
+  readyCta: {
+    heading: "",
+    subtitle: "",
+    ctaText: "",
+    ctaUrl: "",
   },
   missionVision: {
     mission: {

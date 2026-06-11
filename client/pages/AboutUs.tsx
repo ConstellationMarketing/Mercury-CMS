@@ -236,10 +236,10 @@ export default function AboutUs() {
       <AboutTeamMembersSection content={content.teamMembers} />
 
       {/* Partner Logos / Awards Bar */}
-      <PartnerLogosBar />
+      <PartnerLogosBar logos={content.partnerLogos?.logos?.length ? content.partnerLogos.logos : undefined} />
 
       {/* Client Testimonials */}
-      <AboutTestimonialsSection />
+      <AboutTestimonialsSection content={content.aboutTestimonials} />
 
       {/* Ready to Get Started CTA */}
       <div style={{ backgroundColor: "rgb(235,235,235)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
@@ -249,13 +249,13 @@ export default function AboutUs() {
               className="font-archivo font-bold"
               style={{ color: "rgb(0,0,0)", fontSize: 52, lineHeight: "52px", paddingBottom: 20, wordBreak: "break-word" }}
             >
-              READY TO GET STARTED?
+              {content.readyCta?.heading || "READY TO GET STARTED?"}
             </h2>
             <p
               className="font-archivo"
               style={{ color: "rgb(43,43,43)", fontSize: 24, fontWeight: 300, lineHeight: "34px", marginBottom: 30, wordBreak: "break-word" }}
             >
-              Contact us today for a free consultation. We're available 24/7 to help you.
+              {content.readyCta?.subtitle || "Contact us today for a free consultation. We're available 24/7 to help you."}
             </p>
             <div style={{ marginBottom: 30, textAlign: "center" }}>
               <a
@@ -268,7 +268,7 @@ export default function AboutUs() {
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Link
-                to="/contact"
+                to={content.readyCta?.ctaUrl || "/contact"}
                 className="font-archivo hover:opacity-90 transition-opacity duration-300"
                 style={{
                   backgroundColor: "rgb(252,200,47)",
@@ -283,7 +283,7 @@ export default function AboutUs() {
                   whiteSpace: "nowrap",
                 }}
               >
-                GET HELP NOW
+                {content.readyCta?.ctaText || "GET HELP NOW"}
               </Link>
             </div>
           </div>
