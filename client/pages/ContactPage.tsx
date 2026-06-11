@@ -77,46 +77,6 @@ export default function ContactPage() {
       />
 
 
-      {/* Contact Methods Section */}
-      <div className="bg-white py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {contactMethods.map((method, index) => {
-              const Icon = method.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-brand-card border border-brand-border p-[30px] md:p-[40px] text-center group hover:border-brand-accent transition-all duration-300"
-                >
-                  <div className="flex justify-center mb-[20px]">
-                    <div className="bg-brand-accent p-[20px] inline-block transition-all duration-300 group-hover:bg-white group-hover:scale-110">
-                      <Icon
-                        className="w-[35px] h-[35px] md:w-[40px] md:h-[40px] text-black"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                  </div>
-                  <h3 className="font-playfair text-[24px] md:text-[28px] leading-tight text-brand-accent mb-[15px]">
-                    {method.title}
-                  </h3>
-                  <p className="font-outfit text-[18px] md:text-[20px] text-white mb-[8px]">
-                    {method.title === "Phone" ? (
-                      <a href={`tel:${method.detail.replace(/\D/g, "")}`}>
-                        {method.detail}
-                      </a>
-                    ) : (
-                      method.detail
-                    )}
-                  </p>
-                  <p className="font-outfit text-[14px] md:text-[16px] text-white/70">
-                    {method.subdDetail}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
 
       {/* Contact Form & Office Hours Section */}
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
