@@ -10,6 +10,17 @@ export interface ContactHeroContent {
   backgroundImage: string;
 }
 
+export interface OfficeHoursRow {
+  day: string;
+  hours: string;
+}
+
+export interface ContactOfficeHoursSectionContent {
+  heading: string;
+  rows: OfficeHoursRow[];
+  note: string;
+}
+
 export interface ContactFormSectionContent {
   heading: string;
   sideImage: string;
@@ -92,6 +103,7 @@ export interface ContactPageContent {
   hero: ContactHeroContent;
   contactInfo: ContactInfoSectionContent;
   contactForm: ContactFormSectionContent;
+  officeHoursSection: ContactOfficeHoursSectionContent;
   contactMethods: ContactMethodsContent;
   form: ContactFormContent;
   officeHours: OfficeHoursContent;
@@ -116,6 +128,11 @@ export const defaultContactContent: ContactPageContent = {
     heading: "",
     sideImage: "",
     badgeImage: "",
+  },
+  officeHoursSection: {
+    heading: "",
+    rows: [],
+    note: "",
   },
   contactInfo: {
     phone: "",

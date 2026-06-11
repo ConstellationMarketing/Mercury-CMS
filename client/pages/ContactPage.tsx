@@ -12,6 +12,7 @@ import {
 import { useContactContent } from "@site/hooks/useContactContent";
 import ContactInfoSection from "@site/components/contact/ContactInfoSection";
 import ContactFormSection from "@site/components/contact/ContactFormSection";
+import ContactOfficeHoursSection from "@site/components/contact/ContactOfficeHoursSection";
 import { useGlobalPhone, useSiteSettings } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -133,6 +134,9 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <ContactFormSection content={content.contactForm} />
+
+      {/* Office Hours Section */}
+      <ContactOfficeHoursSection content={content.officeHoursSection} />
 
       {/* Contact Info Section */}
       <ContactInfoSection

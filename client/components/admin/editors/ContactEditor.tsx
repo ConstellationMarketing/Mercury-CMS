@@ -15,6 +15,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
     <div className="space-y-6">
       <ContactHeroEditor content={content} update={update} />
       <ContactFormEditor content={content} update={update} />
+      <OfficeHoursSectionEditor content={content} update={update} />
       <ContactInfoEditor content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
@@ -35,6 +36,32 @@ function ContactFormEditor({ content, update }: SectionProps) {
         <div><Label>Heading</Label><Input value={cf?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="SEND US A MESSAGE" /></div>
         <ImageField label="Side Image" value={cf?.sideImage || ""} onChange={(url) => set({ sideImage: url })} folder="contact" />
         <ImageField label="Badge Image" value={cf?.badgeImage || ""} onChange={(url) => set({ badgeImage: url })} folder="badges" />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function OfficeHoursSectionEditor({ content, update }: SectionProps) {
+  const oh = content.officeHoursSection;
+  const set = (patch: Partial<typeof oh>) => update("officeHoursSection", { ...oh, ...patch });
+  return (
+    <Section title="Office Hours" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div><Label>Heading</Label><Input value={oh?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="OFFICE HOURS" /></div>
+        <ArrayEditor
+          items={oh?.rows || []}
+          onChange={(rows) => set({ rows })}
+          itemLabel="Row"
+          newItem={() => ({ day: "", hours: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid grid-cols-2 gap-3">
+              <div><Label>Day / Period</Label><Input value={item.day} onChange={(e) => upd({ ...item, day: e.target.value })} placeholder="Monday - Friday" /></div>
+              <div><Label>Hours</Label><Input value={item.hours} onChange={(e) => upd({ ...item, hours: e.target.value })} placeholder="9:00 AM - 6:00 PM" /></div>
+            </div>
+          )}
+        />
+        <div><Label>Note</Label><Input value={oh?.note || ""} onChange={(e) => set({ note: e.target.value })} placeholder="Appointments available by request" /></div>
       </div>
     </Section>
   );
