@@ -18,7 +18,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
       <OfficeHoursSectionEditor content={content} update={update} />
       <MapSectionEditor content={content} update={update} />
       <ContactInfoEditor content={content} update={update} />
-      <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
+      <ContactCtaEditor content={content} update={update} />
     </div>
   );
 }
@@ -63,6 +63,29 @@ function OfficeHoursSectionEditor({ content, update }: SectionProps) {
           )}
         />
         <div><Label>Note</Label><Input value={oh?.note || ""} onChange={(e) => set({ note: e.target.value })} placeholder="Appointments available by request" /></div>
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function ContactCtaEditor({ content, update }: SectionProps) {
+  const cc = content.contactCta;
+  const set = (patch: Partial<typeof cc>) => update("contactCta", { ...cc, ...patch });
+  return (
+    <Section title="Available 24/7 (CTA)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div><Label>Heading</Label><Input value={cc?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="AVAILABLE 24/7" /></div>
+        <div><Label>Subtitle</Label><Input value={cc?.subtitle || ""} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Don't wait. Call us now..." /></div>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Phone (digits)</Label><Input value={cc?.phone || ""} onChange={(e) => set({ phone: e.target.value })} placeholder="4045555555" /></div>
+          <div><Label>Phone Display</Label><Input value={cc?.phoneDisplay || ""} onChange={(e) => set({ phoneDisplay: e.target.value })} placeholder="404-555-5555" /></div>
+        </div>
+        <p className="text-xs text-gray-500 italic">Leave phone blank to use the number from Site Settings.</p>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Button Text</Label><Input value={cc?.ctaText || ""} onChange={(e) => set({ ctaText: e.target.value })} placeholder="GET HELP NOW" /></div>
+          <div><Label>Button URL</Label><Input value={cc?.ctaUrl || ""} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" /></div>
+        </div>
       </div>
     </Section>
   );

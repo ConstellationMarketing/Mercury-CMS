@@ -1,4 +1,5 @@
 import Seo from "@site/components/Seo";
+import { Link } from "react-router-dom";
 import Layout from "@site/components/layout/Layout";
 import ContactForm from "@site/components/home/ContactForm";
 import {
@@ -169,6 +170,55 @@ export default function ContactPage() {
           </div>
         );
       })()}
+
+      {/* Available 24/7 CTA */}
+      <div style={{ backgroundColor: "rgb(235,235,235)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+        <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 1440, paddingBottom: 27, paddingTop: 27, width: "80%" }}>
+          <div style={{ textAlign: "center" }}>
+            <h2
+              className="font-archivo font-bold"
+              style={{ color: "rgb(0,0,0)", fontSize: 52, lineHeight: "52px", paddingBottom: 20, wordBreak: "break-word" }}
+            >
+              {content.contactCta?.heading || "AVAILABLE 24/7"}
+            </h2>
+            <p
+              className="font-archivo"
+              style={{ color: "rgb(43,43,43)", fontSize: 24, fontWeight: 300, lineHeight: "34px", marginBottom: 30, wordBreak: "break-word" }}
+            >
+              {content.contactCta?.subtitle || "Don't wait. Call us now for immediate assistance."}
+            </p>
+            <div style={{ marginBottom: 30, textAlign: "center" }}>
+              <a
+                href={`tel:${content.contactCta?.phone || phoneNumber}`}
+                className="font-archivo font-bold hover:opacity-80 transition-opacity duration-150"
+                style={{ color: "rgb(94,6,14)", fontSize: 48, lineHeight: "72px" }}
+              >
+                {content.contactCta?.phoneDisplay || phoneDisplay}
+              </a>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Link
+                to={content.contactCta?.ctaUrl || "/contact"}
+                className="font-archivo hover:opacity-90 transition-opacity duration-300"
+                style={{
+                  backgroundColor: "rgb(252,200,47)",
+                  borderRadius: 16,
+                  color: "rgb(17,71,36)",
+                  fontSize: 26,
+                  lineHeight: "44.2px",
+                  paddingBottom: 14,
+                  paddingLeft: 26,
+                  paddingRight: 26,
+                  paddingTop: 14,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {content.contactCta?.ctaText || "GET HELP NOW"}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </Layout>
   );
