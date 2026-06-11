@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useContactContent } from "@site/hooks/useContactContent";
 import ContactInfoSection from "@site/components/contact/ContactInfoSection";
+import ContactFormSection from "@site/components/contact/ContactFormSection";
 import { useGlobalPhone, useSiteSettings } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -129,6 +130,9 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      {/* Contact Form Section */}
+      <ContactFormSection content={content.contactForm} />
 
       {/* Contact Info Section */}
       <ContactInfoSection

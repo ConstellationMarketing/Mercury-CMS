@@ -10,6 +10,12 @@ export interface ContactHeroContent {
   backgroundImage: string;
 }
 
+export interface ContactFormSectionContent {
+  heading: string;
+  sideImage: string;
+  badgeImage: string;
+}
+
 export interface ContactInfoSectionContent {
   phone: string;
   phoneDisplay: string;
@@ -85,6 +91,7 @@ export interface CTAContent {
 export interface ContactPageContent {
   hero: ContactHeroContent;
   contactInfo: ContactInfoSectionContent;
+  contactForm: ContactFormSectionContent;
   contactMethods: ContactMethodsContent;
   form: ContactFormContent;
   officeHours: OfficeHoursContent;
@@ -104,6 +111,11 @@ export const defaultContactContent: ContactPageContent = {
     h1Title: "",
     subtitle: "",
     backgroundImage: "",
+  },
+  contactForm: {
+    heading: "",
+    sideImage: "",
+    badgeImage: "",
   },
   contactInfo: {
     phone: "",

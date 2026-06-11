@@ -14,6 +14,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
   return (
     <div className="space-y-6">
       <ContactHeroEditor content={content} update={update} />
+      <ContactFormEditor content={content} update={update} />
       <ContactInfoEditor content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
@@ -23,6 +24,21 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
 /* ------------------------------------------------------------------ */
 type Updater = <K extends keyof ContactPageContent>(key: K, value: ContactPageContent[K]) => void;
 type SectionProps = { content: ContactPageContent; update: Updater };
+
+/* ------------------------------------------------------------------ */
+function ContactFormEditor({ content, update }: SectionProps) {
+  const cf = content.contactForm;
+  const set = (patch: Partial<typeof cf>) => update("contactForm", { ...cf, ...patch });
+  return (
+    <Section title="Contact Form Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div><Label>Heading</Label><Input value={cf?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="SEND US A MESSAGE" /></div>
+        <ImageField label="Side Image" value={cf?.sideImage || ""} onChange={(url) => set({ sideImage: url })} folder="contact" />
+        <ImageField label="Badge Image" value={cf?.badgeImage || ""} onChange={(url) => set({ badgeImage: url })} folder="badges" />
+      </div>
+    </Section>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 function ContactInfoEditor({ content, update }: SectionProps) {

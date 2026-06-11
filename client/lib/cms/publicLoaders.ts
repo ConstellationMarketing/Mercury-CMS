@@ -623,6 +623,7 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     contactInfo: { ...defaults.contactInfo, ...cmsContent.contactInfo },
+    contactForm: { ...defaults.contactForm, ...cmsContent.contactForm },
     contactMethods: {
       ...defaults.contactMethods,
       ...cmsContent.contactMethods,
