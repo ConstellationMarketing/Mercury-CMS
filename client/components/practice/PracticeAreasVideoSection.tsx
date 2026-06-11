@@ -112,6 +112,7 @@ export default function PracticeAreasVideoSection({ content }: Props) {
               style={{ color: "rgb(43,43,43)", fontSize: "31.9488px", fontWeight: 300, lineHeight: "35.1437px", wordBreak: "break-word", marginBottom: 20 }}
               dangerouslySetInnerHTML={{ __html: text }}
             />
+            <style>{`.practice-video-text p { margin-bottom: 20px; } .practice-video-text p:last-child { margin-bottom: 0; }`}</style>
             <div style={{ marginTop: 40 }}>
               <Link
                 to={ctaUrl}
