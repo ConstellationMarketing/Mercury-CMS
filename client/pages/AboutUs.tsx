@@ -18,6 +18,7 @@ import { useAboutContent } from "@site/hooks/useAboutContent";
 import TeamSectionHeading from "@site/components/home/TeamSectionHeading";
 import AboutTeamMembersSection from "@site/components/about/AboutTeamMembersSection";
 import PartnerLogosBar from "@site/components/home/PartnerLogosBar";
+import AboutTestimonialsSection from "@site/components/about/AboutTestimonialsSection";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -236,6 +237,9 @@ export default function AboutUs() {
 
       {/* Partner Logos / Awards Bar */}
       <PartnerLogosBar />
+
+      {/* Client Testimonials */}
+      <AboutTestimonialsSection />
 
       {/* Core Values Section */}
       {coreValues.length > 0 && (
