@@ -685,6 +685,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
+    intro: { ...defaults.intro, ...cmsContent.intro },
     grid: {
       ...defaults.grid,
       ...cmsContent.grid,

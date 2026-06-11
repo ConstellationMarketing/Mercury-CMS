@@ -14,6 +14,7 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
+      <IntroSection content={content} update={update} />
       <GridSection content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
@@ -55,6 +56,28 @@ function HeroSection({ content, update }: SectionProps) {
           onChange={(url) => set({ backgroundImage: url })}
           folder="backgrounds"
         />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function IntroSection({ content, update }: SectionProps) {
+  const intro = content.intro;
+  const set = (patch: Partial<typeof intro>) => update("intro", { ...intro, ...patch });
+
+  return (
+    <Section title="Intro Text" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Text</Label>
+          <Textarea
+            value={intro?.text || ""}
+            onChange={(e) => set({ text: e.target.value })}
+            rows={4}
+            placeholder="With decades of experience..."
+          />
+        </div>
       </div>
     </Section>
   );

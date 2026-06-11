@@ -132,6 +132,20 @@ export default function PracticeAreas() {
       </div>
 
 
+      {/* Intro Text Section */}
+      <div style={{ backgroundColor: "rgb(255,255,255)", paddingBottom: 54, paddingTop: 54, width: "100%" }}>
+        <div style={{ marginLeft: "auto", marginRight: "auto", maxWidth: 1080, paddingBottom: 27, paddingTop: 27, width: "80%" }}>
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <p
+              className="font-archivo"
+              style={{ color: "rgb(43,43,43)", fontSize: "25.6512px", fontWeight: 300, lineHeight: "35.1437px", wordBreak: "break-word" }}
+            >
+              {content.intro?.text || "With decades of experience and billions won for our clients, Constellation Law offers comprehensive legal representation across a wide range of practice areas. Our team of dedicated attorneys has the expertise and resources to handle even the most complex cases."}
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Why Choose Our Practice Section */}
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
         <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">

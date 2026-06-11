@@ -57,9 +57,14 @@ export interface CTAContent {
   };
 }
 
+export interface PracticeAreasIntroContent {
+  text: string;
+}
+
 // Complete Practice Areas page content structure
 export interface PracticeAreasPageContent {
   hero: PracticeAreasHeroContent;
+  intro: PracticeAreasIntroContent;
   grid: PracticeAreasGridContent;
   whyChoose: WhyChooseContent;
   cta: CTAContent;
@@ -78,6 +83,9 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
     h1Title: "",
     subtitle: "",
     backgroundImage: "",
+  },
+  intro: {
+    text: "",
   },
   grid: {
     heading: "",
