@@ -74,11 +74,21 @@ export interface PracticeAreasCardsContent {
   areas: PracticeAreaCardItem[];
 }
 
+export interface PracticeAreasVideoSectionContent {
+  videoUrl: string;
+  thumbnailImage: string;
+  heading: string;
+  paragraphs: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
 // Complete Practice Areas page content structure
 export interface PracticeAreasPageContent {
   hero: PracticeAreasHeroContent;
   intro: PracticeAreasIntroContent;
   cards: PracticeAreasCardsContent;
+  videoSection: PracticeAreasVideoSectionContent;
   grid: PracticeAreasGridContent;
   whyChoose: WhyChooseContent;
   cta: CTAContent;
@@ -103,6 +113,14 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
   },
   cards: {
     areas: [],
+  },
+  videoSection: {
+    videoUrl: "",
+    thumbnailImage: "",
+    heading: "",
+    paragraphs: [],
+    ctaText: "",
+    ctaUrl: "",
   },
   grid: {
     heading: "",

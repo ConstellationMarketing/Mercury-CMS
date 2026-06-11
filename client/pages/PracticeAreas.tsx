@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
 import PracticeAreasCardsSection from "@site/components/practice/PracticeAreasCardsSection";
+import PracticeAreasVideoSection from "@site/components/practice/PracticeAreasVideoSection";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -150,6 +151,8 @@ export default function PracticeAreas() {
       {/* Practice Areas Cards Grid */}
       <PracticeAreasCardsSection content={content.cards} />
 
+      {/* Video + Text Section */}
+      <PracticeAreasVideoSection content={content.videoSection} />
 
     </Layout>
   );

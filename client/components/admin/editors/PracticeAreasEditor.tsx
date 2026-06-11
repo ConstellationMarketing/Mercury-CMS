@@ -16,6 +16,7 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
       <HeroSection content={content} update={update} />
       <IntroSection content={content} update={update} />
       <CardsSection content={content} update={update} />
+      <VideoSectionEditor content={content} update={update} />
       <GridSection content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
@@ -113,6 +114,50 @@ function CardsSection({ content, update }: SectionProps) {
           </div>
         )}
       />
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function VideoSectionEditor({ content, update }: SectionProps) {
+  const vs = content.videoSection;
+  const set = (patch: Partial<typeof vs>) => update("videoSection", { ...vs, ...patch });
+
+  return (
+    <Section title="Video + Text Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Video URL (YouTube embed)</Label>
+          <Input value={vs?.videoUrl || ""} onChange={(e) => set({ videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/..." />
+        </div>
+        <ImageField
+          label="Thumbnail Image"
+          value={vs?.thumbnailImage || ""}
+          onChange={(url) => set({ thumbnailImage: url })}
+          folder="video-thumbnails"
+        />
+        <div>
+          <Label>Heading</Label>
+          <Input value={vs?.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="Experience You Can Trust" />
+        </div>
+        <h4 className="font-medium mt-2">Paragraphs</h4>
+        <ArrayEditor
+          items={(vs?.paragraphs || []).map((text, i) => ({ id: String(i), text }))}
+          onChange={(items) => set({ paragraphs: items.map((it) => it.text) })}
+          itemLabel="Paragraph"
+          newItem={() => ({ id: String(Date.now()), text: "" })}
+          renderItem={(item, _, upd) => (
+            <div>
+              <Label>Text</Label>
+              <Textarea value={item.text} onChange={(e) => upd({ ...item, text: e.target.value })} rows={2} />
+            </div>
+          )}
+        />
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Button Text</Label><Input value={vs?.ctaText || ""} onChange={(e) => set({ ctaText: e.target.value })} placeholder="SCHEDULE CONSULTATION" /></div>
+          <div><Label>Button URL</Label><Input value={vs?.ctaUrl || ""} onChange={(e) => set({ ctaUrl: e.target.value })} placeholder="/contact" /></div>
+        </div>
+      </div>
     </Section>
   );
 }
