@@ -275,7 +275,17 @@ function ReadyCTAEditor({ content, update }: SectionProps) {
           <Label>Subtitle</Label>
           <Input value={rc.subtitle} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Contact us today for a free consultation..." />
         </div>
-        <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label>Phone (digits, for tel: link)</Label>
+            <Input value={rc.phone} onChange={(e) => set({ phone: e.target.value })} placeholder="4045555555" />
+          </div>
+          <div>
+            <Label>Phone Display</Label>
+            <Input value={rc.phoneDisplay} onChange={(e) => set({ phoneDisplay: e.target.value })} placeholder="404-555-5555" />
+          </div>
+        </div>
+        <p className="text-xs text-gray-500 italic">Leave phone blank to use the number from Site Settings.</p>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label>Button Text</Label>

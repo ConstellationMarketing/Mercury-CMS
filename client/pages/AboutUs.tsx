@@ -228,11 +228,11 @@ export default function AboutUs() {
             </p>
             <div style={{ marginBottom: 30, textAlign: "center" }}>
               <a
-                href={`tel:${phoneNumber}`}
+                href={`tel:${content.readyCta?.phone || phoneNumber}`}
                 className="font-archivo font-bold hover:opacity-80 transition-opacity duration-150"
                 style={{ color: "rgb(94,6,14)", fontSize: 48, lineHeight: "72px" }}
               >
-                {phoneDisplay}
+                {content.readyCta?.phoneDisplay || phoneDisplay}
               </a>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>

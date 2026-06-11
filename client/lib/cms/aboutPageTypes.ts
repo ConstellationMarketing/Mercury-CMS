@@ -150,6 +150,8 @@ export interface AboutTestimonialsContent {
 export interface AboutReadyCTAContent {
   heading: string;
   subtitle: string;
+  phone: string;
+  phoneDisplay: string;
   ctaText: string;
   ctaUrl: string;
 }
@@ -224,6 +226,8 @@ export const defaultAboutContent: AboutPageContent = {
   readyCta: {
     heading: "",
     subtitle: "",
+    phone: "",
+    phoneDisplay: "",
     ctaText: "",
     ctaUrl: "",
   },
