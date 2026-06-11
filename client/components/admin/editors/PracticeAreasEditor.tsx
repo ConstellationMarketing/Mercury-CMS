@@ -18,8 +18,6 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
       <CardsSection content={content} update={update} />
       <VideoSectionEditor content={content} update={update} />
       <PracticeCtaEditor content={content} update={update} />
-      <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
-      <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
   );
 }
