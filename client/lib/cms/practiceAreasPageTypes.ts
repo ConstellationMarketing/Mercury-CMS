@@ -88,7 +88,7 @@ export interface PracticeAreasVideoSectionContent {
   videoUrl: string;
   thumbnailImage: string;
   heading: string;
-  paragraphs: string[];
+  text: string;
   ctaText: string;
   ctaUrl: string;
 }
@@ -129,7 +129,7 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
     videoUrl: "",
     thumbnailImage: "",
     heading: "",
-    paragraphs: [],
+    text: "",
     ctaText: "",
     ctaUrl: "",
   },

@@ -689,13 +689,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
     cards: {
       areas: cmsContent.cards?.areas?.length ? cmsContent.cards.areas : defaults.cards.areas,
     },
-    videoSection: {
-      ...defaults.videoSection,
-      ...cmsContent.videoSection,
-      paragraphs: cmsContent.videoSection?.paragraphs?.length
-        ? cmsContent.videoSection.paragraphs
-        : defaults.videoSection.paragraphs,
-    },
+    videoSection: { ...defaults.videoSection, ...cmsContent.videoSection },
     practiceCta: { ...defaults.practiceCta, ...cmsContent.practiceCta },
     grid: {
       ...defaults.grid,

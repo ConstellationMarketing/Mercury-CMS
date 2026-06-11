@@ -5,7 +5,7 @@ export interface PracticeAreasVideoSectionContent {
   videoUrl: string;
   thumbnailImage: string;
   heading: string;
-  paragraphs: string[];
+  text: string;
   ctaText: string;
   ctaUrl: string;
 }
@@ -14,10 +14,7 @@ const DEFAULT: PracticeAreasVideoSectionContent = {
   videoUrl: "https://www.youtube.com/embed/FkQuawiGWUw?feature=oembed",
   thumbnailImage: "https://designs-mercury.netlify.app/images/image-8-min.jpg",
   heading: "Experience You Can Trust",
-  paragraphs: [
-    "Our attorneys have successfully handled thousands of cases across all practice areas, securing billions in compensation for our clients.",
-    "When you need aggressive representation and personalized attention, trust the team at Constellation Law.",
-  ],
+  text: "<p>Our attorneys have successfully handled thousands of cases across all practice areas, securing billions in compensation for our clients.</p><p>When you need aggressive representation and personalized attention, trust the team at Constellation Law.</p>",
   ctaText: "SCHEDULE CONSULTATION",
   ctaUrl: "/contact",
 };
@@ -32,7 +29,7 @@ export default function PracticeAreasVideoSection({ content }: Props) {
   const videoUrl = content?.videoUrl || DEFAULT.videoUrl;
   const thumbnail = content?.thumbnailImage || DEFAULT.thumbnailImage;
   const heading = content?.heading || DEFAULT.heading;
-  const paragraphs = content?.paragraphs?.length ? content.paragraphs : DEFAULT.paragraphs;
+  const text = content?.text || DEFAULT.text;
   const ctaText = content?.ctaText || DEFAULT.ctaText;
   const ctaUrl = content?.ctaUrl || DEFAULT.ctaUrl;
 
@@ -110,17 +107,11 @@ export default function PracticeAreasVideoSection({ content }: Props) {
                 {heading}
               </h2>
             </div>
-            <div style={{ marginBottom: 20 }}>
-              {paragraphs.map((para, i) => (
-                <p
-                  key={i}
-                  className="font-archivo"
-                  style={{ color: "rgb(43,43,43)", fontSize: "31.9488px", fontWeight: 300, lineHeight: "35.1437px", marginBottom: i < paragraphs.length - 1 ? 20 : 0, wordBreak: "break-word" }}
-                >
-                  {para}
-                </p>
-              ))}
-            </div>
+            <div
+              className="font-archivo practice-video-text"
+              style={{ color: "rgb(43,43,43)", fontSize: "31.9488px", fontWeight: 300, lineHeight: "35.1437px", wordBreak: "break-word", marginBottom: 20 }}
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
             <div style={{ marginTop: 40 }}>
               <Link
                 to={ctaUrl}
