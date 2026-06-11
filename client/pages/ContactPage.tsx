@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useContactContent } from "@site/hooks/useContactContent";
+import ContactInfoSection from "@site/components/contact/ContactInfoSection";
 import { useGlobalPhone, useSiteSettings } from "@site/contexts/SiteSettingsContext";
 import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
@@ -129,9 +130,12 @@ export default function ContactPage() {
         </div>
       </div>
 
-
-
-
+      {/* Contact Info Section */}
+      <ContactInfoSection
+        content={content.contactInfo}
+        globalPhone={phoneNumber}
+        globalPhoneDisplay={phoneDisplay}
+      />
 
     </Layout>
   );

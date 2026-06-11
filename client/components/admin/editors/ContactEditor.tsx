@@ -14,6 +14,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
   return (
     <div className="space-y-6">
       <ContactHeroEditor content={content} update={update} />
+      <ContactInfoEditor content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
   );
@@ -22,6 +23,36 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
 /* ------------------------------------------------------------------ */
 type Updater = <K extends keyof ContactPageContent>(key: K, value: ContactPageContent[K]) => void;
 type SectionProps = { content: ContactPageContent; update: Updater };
+
+/* ------------------------------------------------------------------ */
+function ContactInfoEditor({ content, update }: SectionProps) {
+  const ci = content.contactInfo;
+  const set = (patch: Partial<typeof ci>) => update("contactInfo", { ...ci, ...patch });
+  return (
+    <Section title="Contact Info (Phone / Email / Address)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <h4 className="font-medium">Phone</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Phone (digits)</Label><Input value={ci?.phone || ""} onChange={(e) => set({ phone: e.target.value })} placeholder="4045555555" /></div>
+          <div><Label>Phone Display</Label><Input value={ci?.phoneDisplay || ""} onChange={(e) => set({ phoneDisplay: e.target.value })} placeholder="404-555-5555" /></div>
+        </div>
+        <div><Label>Phone Label</Label><Input value={ci?.phoneLabel || ""} onChange={(e) => set({ phoneLabel: e.target.value })} placeholder="Available 24/7" /></div>
+        <p className="text-xs text-gray-500 italic">Leave phone blank to use the number from Site Settings.</p>
+        <hr />
+        <h4 className="font-medium">Email</h4>
+        <div><Label>Email Address</Label><Input value={ci?.email || ""} onChange={(e) => set({ email: e.target.value })} placeholder="info@constellationlaw.com" /></div>
+        <div><Label>Email Label</Label><Input value={ci?.emailLabel || ""} onChange={(e) => set({ emailLabel: e.target.value })} placeholder="We respond within 24 hours" /></div>
+        <hr />
+        <h4 className="font-medium">Address</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div><Label>Address Line 1</Label><Input value={ci?.addressLine1 || ""} onChange={(e) => set({ addressLine1: e.target.value })} placeholder="PO Box 170027" /></div>
+          <div><Label>Address Line 2</Label><Input value={ci?.addressLine2 || ""} onChange={(e) => set({ addressLine2: e.target.value })} placeholder="Atlanta, GA 30317-9998" /></div>
+        </div>
+        <div><Label>Address Label</Label><Input value={ci?.addressLabel || ""} onChange={(e) => set({ addressLabel: e.target.value })} placeholder="Main Office" /></div>
+      </div>
+    </Section>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 function ContactHeroEditor({ content, update }: SectionProps) {

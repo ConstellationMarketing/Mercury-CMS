@@ -10,6 +10,17 @@ export interface ContactHeroContent {
   backgroundImage: string;
 }
 
+export interface ContactInfoSectionContent {
+  phone: string;
+  phoneDisplay: string;
+  phoneLabel: string;
+  email: string;
+  emailLabel: string;
+  addressLine1: string;
+  addressLine2: string;
+  addressLabel: string;
+}
+
 export interface ContactMethodItem {
   icon: string; // Lucide icon name
   title: string; // "Phone", "Email", "Office"
@@ -73,6 +84,7 @@ export interface CTAContent {
 // Complete Contact page content structure
 export interface ContactPageContent {
   hero: ContactHeroContent;
+  contactInfo: ContactInfoSectionContent;
   contactMethods: ContactMethodsContent;
   form: ContactFormContent;
   officeHours: OfficeHoursContent;
@@ -92,6 +104,16 @@ export const defaultContactContent: ContactPageContent = {
     h1Title: "",
     subtitle: "",
     backgroundImage: "",
+  },
+  contactInfo: {
+    phone: "",
+    phoneDisplay: "",
+    phoneLabel: "",
+    email: "",
+    emailLabel: "",
+    addressLine1: "",
+    addressLine2: "",
+    addressLabel: "",
   },
   contactMethods: {
     methods: [],
