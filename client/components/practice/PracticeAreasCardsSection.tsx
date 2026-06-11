@@ -16,15 +16,15 @@ export interface PracticeAreasCardsSectionContent {
 const BASE = "https://designs-mercury.netlify.app/images";
 
 const DEFAULT_AREAS: PracticeAreaCardItem[] = [
-  { iconImage: `${BASE}/icon_0_0_112x112-min.png`, iconImageAlt: "Personal Injury", title: "Personal Injury", description: "Comprehensive representation for all types of injury claims, ensuring you receive the compensation you deserve for your pain and suffering.", tags: "Investigation & Documentation • Settlement Negotiation • Trial Representation", link: "/practice-areas/personal-injury" },
-  { iconImage: `${BASE}/icon_0_1_112x112-min.png`, iconImageAlt: "Car Accidents", title: "Car Accidents", description: "Dedicated advocacy for victims of auto accidents, from minor collisions to catastrophic crashes that change lives forever.", tags: "Accident Reconstruction • Insurance Claims • Maximum Compensation", link: "/practice-areas/car-accidents" },
-  { iconImage: `${BASE}/icon_0_2_112x112-min.png`, iconImageAlt: "Medical Malpractice", title: "Medical Malpractice", description: "Holding healthcare providers accountable when negligence causes harm to patients and their families.", tags: "Expert Medical Review • Hospital Negligence • Surgical Errors", link: "/practice-areas/medical-malpractice" },
-  { iconImage: `${BASE}/icon_1_0_112x112-min.png`, iconImageAlt: "Wrongful Death", title: "Wrongful Death", description: "Compassionate support for families seeking justice after the loss of a loved one due to negligence or wrongdoing.", tags: "Family Support • Estate Claims • Funeral Expenses", link: "/practice-areas/wrongful-death" },
-  { iconImage: `${BASE}/icon_1_1_112x112-min.png`, iconImageAlt: "Slip & Fall", title: "Slip & Fall", description: "Protecting the rights of those injured due to dangerous property conditions and owner negligence.", tags: "Property Inspection • Liability Claims • Injury Documentation", link: "/practice-areas/slip-and-fall" },
-  { iconImage: `${BASE}/icon_1_2_112x112-min.png`, iconImageAlt: "Workers' Compensation", title: "Workers' Compensation", description: "Fighting for injured workers to receive full benefits and medical care after workplace accidents.", tags: "Workplace Safety • Benefits Claims • Disability Support", link: "/practice-areas/workers-compensation" },
-  { iconImage: `${BASE}/icon_2_0_112x112-min.png`, iconImageAlt: "Product Liability", title: "Product Liability", description: "Pursuing claims against manufacturers of defective or dangerous products that cause injury to consumers.", tags: "Defective Products • Product Recalls • Manufacturing Defects", link: "/practice-areas/product-liability" },
-  { iconImage: `${BASE}/icon_2_1_112x112-min.png`, iconImageAlt: "Nursing Home Abuse", title: "Nursing Home Abuse", description: "Advocating for elderly victims of neglect and abuse in care facilities, ensuring their dignity and safety.", tags: "Elder Care Rights • Abuse Investigation • Facility Accountability", link: "/practice-areas/nursing-home-abuse" },
-  { iconImage: `${BASE}/icon_2_2_112x112-min.png`, iconImageAlt: "Premises Liability", title: "Premises Liability", description: "Ensuring property owners maintain safe conditions for visitors and guests on their premises.", tags: "Property Maintenance • Owner Negligence • Safety Standards", link: "/practice-areas/premises-liability" },
+  { iconImage: `${BASE}/icon_0_0_112x112-min.png`, iconImageAlt: "Personal Injury", title: "Personal Injury", description: "Comprehensive representation for all types of injury claims, ensuring you receive the compensation you deserve for your pain and suffering.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/personal-injury" },
+  { iconImage: `${BASE}/icon_0_1_112x112-min.png`, iconImageAlt: "Car Accidents", title: "Car Accidents", description: "Dedicated advocacy for victims of auto accidents, from minor collisions to catastrophic crashes that change lives forever.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/car-accidents" },
+  { iconImage: `${BASE}/icon_0_2_112x112-min.png`, iconImageAlt: "Medical Malpractice", title: "Medical Malpractice", description: "Holding healthcare providers accountable when negligence causes harm to patients and their families.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/medical-malpractice" },
+  { iconImage: `${BASE}/icon_1_0_112x112-min.png`, iconImageAlt: "Wrongful Death", title: "Wrongful Death", description: "Compassionate support for families seeking justice after the loss of a loved one due to negligence or wrongdoing.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/wrongful-death" },
+  { iconImage: `${BASE}/icon_1_1_112x112-min.png`, iconImageAlt: "Slip & Fall", title: "Slip & Fall", description: "Protecting the rights of those injured due to dangerous property conditions and owner negligence.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/slip-and-fall" },
+  { iconImage: `${BASE}/icon_1_2_112x112-min.png`, iconImageAlt: "Workers' Compensation", title: "Workers' Compensation", description: "Fighting for injured workers to receive full benefits and medical care after workplace accidents.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/workers-compensation" },
+  { iconImage: `${BASE}/icon_2_0_112x112-min.png`, iconImageAlt: "Product Liability", title: "Product Liability", description: "Pursuing claims against manufacturers of defective or dangerous products that cause injury to consumers.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/product-liability" },
+  { iconImage: `${BASE}/icon_2_1_112x112-min.png`, iconImageAlt: "Nursing Home Abuse", title: "Nursing Home Abuse", description: "Advocating for elderly victims of neglect and abuse in care facilities, ensuring their dignity and safety.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/nursing-home-abuse" },
+  { iconImage: `${BASE}/icon_2_2_112x112-min.png`, iconImageAlt: "Premises Liability", title: "Premises Liability", description: "Ensuring property owners maintain safe conditions for visitors and guests on their premises.", tags: "", learnMoreText: "Learn More →", link: "/practice-areas/premises-liability" },
 ];
 
 interface Props {
@@ -80,7 +80,7 @@ export default function PracticeAreasCardsSection({ content }: Props) {
                     className="font-archivo font-semibold hover:opacity-80 transition-opacity duration-150"
                     style={{ color: "rgb(42,110,66)", fontSize: 18, lineHeight: "27px" }}
                   >
-                    Learn More →
+                    {area.learnMoreText || "Learn More →"}
                   </Link>
                 </div>
               </div>

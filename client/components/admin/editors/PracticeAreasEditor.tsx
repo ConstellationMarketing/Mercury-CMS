@@ -95,12 +95,13 @@ function CardsSection({ content, update }: SectionProps) {
         items={cards?.areas || []}
         onChange={(areas) => update("cards", { areas })}
         itemLabel="Card"
-        newItem={() => ({ iconImage: "", iconImageAlt: "", title: "", description: "", tags: "", link: "" })}
+        newItem={() => ({ iconImage: "", iconImageAlt: "", title: "", description: "", tags: "", learnMoreText: "", link: "" })}
         renderItem={(item, _, upd) => (
           <div className="grid gap-3">
+            <div><Label>Title</Label><Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} /></div>
             <div className="grid grid-cols-2 gap-3">
-              <div><Label>Title</Label><Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} /></div>
-              <div><Label>Link URL</Label><Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/personal-injury" /></div>
+              <div><Label>Learn More Text</Label><Input value={item.learnMoreText || ""} onChange={(e) => upd({ ...item, learnMoreText: e.target.value })} placeholder="Learn More →" /></div>
+              <div><Label>Learn More URL</Label><Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/personal-injury" /></div>
             </div>
             <ImageField
               label="Icon Image (112×112)"

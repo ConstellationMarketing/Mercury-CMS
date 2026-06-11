@@ -67,6 +67,7 @@ export interface PracticeAreaCardItem {
   title: string;
   description: string;
   tags: string;
+  learnMoreText: string;
   link: string;
 }
 
