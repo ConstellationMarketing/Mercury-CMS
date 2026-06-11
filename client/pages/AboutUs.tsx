@@ -260,15 +260,6 @@ export default function AboutUs() {
       </div>
 
 
-      {/* Stats Section */}
-      {stats.length > 0 && (
-      <div className="bg-white py-[30px] md:py-[40px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <StatsGrid stats={stats} />
-        </div>
-      </div>
-
-      )}
 
       {/* Why Choose Us Section */}
       {whyChooseUs.length > 0 && (
