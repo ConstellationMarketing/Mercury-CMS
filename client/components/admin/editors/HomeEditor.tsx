@@ -22,7 +22,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <ClientStoriesSectionEditor content={content} update={update} />
       <ContactFormSectionEditor content={content} update={update} />
       <IconPracticeAreasSectionEditor content={content} update={update} />
-      <ProcessSection content={content} update={update} />
       <GoogleReviewsSection content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
       <ContactSectionEditor content={content} update={update} />
