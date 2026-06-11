@@ -37,24 +37,24 @@ function useHeadingTag(content: PracticeAreasPageContent, update: Updater) {
 function HeroSection({ content, update }: SectionProps) {
   const hero = content.hero;
   const set = (patch: Partial<typeof hero>) => update("hero", { ...hero, ...patch });
-  const ht = useHeadingTag(content, update);
 
   return (
     <Section title="Hero Section">
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={hero.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={content.headingTags?.["hero.sectionLabel"] ?? "h1"}
-          onTagChange={(t) => ht.set("hero.sectionLabel", t)}
-        />
         <div>
-          <Label>Tagline</Label>
-          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} />
+          <Label>H1 Title</Label>
+          <Input value={hero.h1Title || ""} onChange={(e) => set({ h1Title: e.target.value })} placeholder="OUR PRACTICE AREAS" />
         </div>
-        <RichTextField label="Description" value={hero.description} onChange={(v) => set({ description: v })} />
-        <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
+        <div>
+          <Label>Subtitle</Label>
+          <Input value={hero.subtitle || ""} onChange={(e) => set({ subtitle: e.target.value })} placeholder="Comprehensive Legal Services" />
+        </div>
+        <ImageField
+          label="Background Image"
+          value={hero.backgroundImage || ""}
+          onChange={(url) => set({ backgroundImage: url })}
+          folder="backgrounds"
+        />
       </div>
     </Section>
   );

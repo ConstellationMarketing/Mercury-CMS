@@ -7,6 +7,9 @@ export interface PracticeAreasHeroContent {
   description: string; // Description paragraph
   phone: string;
   phoneLabel: string;
+  h1Title: string;       // e.g. "OUR PRACTICE AREAS"
+  subtitle: string;      // e.g. "Comprehensive Legal Services"
+  backgroundImage: string; // hero bg image URL
 }
 
 export interface PracticeAreaGridItem {
@@ -72,6 +75,9 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
     description: "",
     phone: "",
     phoneLabel: "",
+    h1Title: "",
+    subtitle: "",
+    backgroundImage: "",
   },
   grid: {
     heading: "",
