@@ -8,9 +8,9 @@ import { useSiteSettings } from "@site/contexts/SiteSettingsContext";
 export default function Header() {
   const { settings } = useSiteSettings();
 
-  const navItems = [...(settings.navigationItems ?? [])].sort(
-    (a, b) => (a.order ?? 0) - (b.order ?? 0),
-  );
+  const navItems = [...(settings.navigationItems ?? [])]
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .map((item) => ({ ...item, href: item.href === "/home" ? "/" : item.href }));
 
   return (
     <>
