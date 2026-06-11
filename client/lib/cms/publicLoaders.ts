@@ -548,20 +548,6 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
-    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
-    iconPracticeAreas: cmsContent.iconPracticeAreas?.length ? cmsContent.iconPracticeAreas : defaults.iconPracticeAreas,
-    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
-    clientStories: {
-      ...defaults.clientStories,
-      ...cmsContent.clientStories,
-      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
-    },
-    teamMembers: {
-      featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
-      members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
-    },
-    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     story: {
       ...defaults.story,
       ...cmsContent.story,
@@ -620,20 +606,6 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
-    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
-    iconPracticeAreas: cmsContent.iconPracticeAreas?.length ? cmsContent.iconPracticeAreas : defaults.iconPracticeAreas,
-    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
-    clientStories: {
-      ...defaults.clientStories,
-      ...cmsContent.clientStories,
-      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
-    },
-    teamMembers: {
-      featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
-      members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
-    },
-    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     contactMethods: {
       ...defaults.contactMethods,
       ...cmsContent.contactMethods,
@@ -697,20 +669,6 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
-    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
-    iconPracticeAreas: cmsContent.iconPracticeAreas?.length ? cmsContent.iconPracticeAreas : defaults.iconPracticeAreas,
-    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
-    clientStories: {
-      ...defaults.clientStories,
-      ...cmsContent.clientStories,
-      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
-    },
-    teamMembers: {
-      featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
-      members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
-    },
-    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     grid: {
       ...defaults.grid,
       ...cmsContent.grid,
@@ -784,20 +742,6 @@ export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<Pra
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    teamSection: { ...defaults.teamSection, ...cmsContent.teamSection },
-    videoCta: { ...defaults.videoCta, ...cmsContent.videoCta },
-    iconPracticeAreas: cmsContent.iconPracticeAreas?.length ? cmsContent.iconPracticeAreas : defaults.iconPracticeAreas,
-    contactFormSection: { ...defaults.contactFormSection, ...cmsContent.contactFormSection },
-    clientStories: {
-      ...defaults.clientStories,
-      ...cmsContent.clientStories,
-      videos: cmsContent.clientStories?.videos?.length ? cmsContent.clientStories.videos : defaults.clientStories.videos,
-    },
-    teamMembers: {
-      featured: { ...defaults.teamMembers.featured, ...cmsContent.teamMembers?.featured },
-      members: cmsContent.teamMembers?.members?.length ? cmsContent.teamMembers.members : defaults.teamMembers.members,
-    },
-    statsVideo: { ...defaults.statsVideo, ...cmsContent.statsVideo },
     socialProof: {
       ...defaults.socialProof,
       ...cmsContent.socialProof,

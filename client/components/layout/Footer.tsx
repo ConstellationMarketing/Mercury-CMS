@@ -54,7 +54,7 @@ export default function Footer() {
   const mapEmbedUrl = rawMapEmbed.startsWith("<")
     ? (rawMapEmbed.match(/src="([^"]+)"/) || [])[1] || ""
     : rawMapEmbed;
-  const address = settings.address?.trim() || "PO Box 170027 Atlanta, GA 30317-9998";
+  const address = [settings.addressLine1, settings.addressLine2].filter(Boolean).join(", ").trim() || "PO Box 170027 Atlanta, GA 30317-9998";
 
   const copyrightRaw = settings.copyrightText?.trim() || `Copyright © 2017-${new Date().getFullYear()} | ${siteName} | All Rights Reserved`;
   const copyrightText = copyrightRaw.replace(/\{year\}/gi, String(new Date().getFullYear()));
